@@ -12,8 +12,7 @@
   },
   "require": {
     "magento/product-community-edition": "2.3.1",
-    "mageplaza/magento-2-italian-language-pack": "dev-master",
-    "mageplaza/module-smtp": "^1.2"
+    "mageplaza/magento-2-italian-language-pack": "dev-master"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "~2.13.0",
