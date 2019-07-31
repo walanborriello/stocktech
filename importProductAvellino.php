@@ -5,6 +5,7 @@
  *
  */
 
+use Exception;
 use Magento\Framework\App\Bootstrap;
 use Magento\Framework\Filesystem\IoInterface;
 
@@ -40,17 +41,43 @@ $customer = null;
 $directory = $objectManager->get('\Magento\Framework\Filesystem\DirectoryList');
 $customer = $objectManager->get(\Magento\Customer\Api\CustomerRepositoryInterface::class);
 echo $rootPath = $directory->getPath('var') . "/import/" . $file;
+
+
+$_product = $objectManager->create('Magento\Catalog\Model\Product');
+$_productRepo = $objectManager->create('\Magento\Catalog\Api\ProductRepositoryInterface');
+
 $row = 1;
 echo "<pre>";
 if(($handle = fopen($rootPath, "r")) !== FALSE){
-    while(($data = fgetcsv($handle, 1000, ";")) !== FALSE){
+    while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
         $products[] = getProductArray($data);
     }
     fclose($handle);
-    echo "<pre>";
-    var_dump($products);
+
+
     echo "\n";
-    echo "END";
+}
+
+var_dump($products); die;
+
+foreach($products as $product){
+    if(isset($product['sku']) && strlen($product['sku']) > 0){
+        try{
+            $prod = $_productRepo->get($product['sku']);
+            echo $prod->getName();
+        }catch(Exception $e){
+            echo 'non trovato' . $product['sku'] . "<br />";
+        }
+
+    }
+}
+
+function createProduct($_product, $data){
+    $_product->setName('Test Product');
+    $_product->setTypeId('simple');
+    $_product->setAttributeSetId(4);
+    $_product->setSku('test-SKU');
+    $_product->save();
 }
 
 function getProductArray($data){

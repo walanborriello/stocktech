@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Reply\Catalog\Model;
+namespace Walan\Catalog\Model;
 
 class Product extends \Magento\Catalog\Model\Product{
 
