@@ -5,15 +5,14 @@
  */
 
 namespace Walan\Catalog\Model;
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Product extends \Magento\Catalog\Model\Product{
 
     public function getMediaGalleryImages(){
-        $imageImport = $this->getCustomAttributes('image_import');
-        echo $imageImport; die;
-        if($imageImport){
-            $url = $imageImport->getValue();
-            if($url && $this->_checkExistUrl($url)){
+        $url = $this->getData('image_import');
+        if($url){
+            if($this->_checkExistUrl($url)){
                 $images = $this->_collectionFactory->create();
                 $image['url'] = $url;
                 $image['id'] = rand(1, 300);
