@@ -5,7 +5,6 @@
  *
  */
 
-use Exception;
 use Magento\Framework\App\Bootstrap;
 use Magento\Framework\Filesystem\IoInterface;
 
@@ -64,7 +63,7 @@ try{
 
         echo "\n";
     }
-}catch(\Exception $e){
+}catch(Exception $e){
 
 }finally{
     fclose($handle);
@@ -221,7 +220,7 @@ function createUpdateProduct($objectManager, $data, $prodId = null){
     try{
         $_product->save();
 
-    }catch(\Exception $e){
+    }catch(Exception $e){
         echo $e->getMessage();
     }
 }
