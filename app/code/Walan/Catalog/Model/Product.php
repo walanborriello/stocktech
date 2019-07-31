@@ -10,6 +10,7 @@ class Product extends \Magento\Catalog\Model\Product{
 
     public function getMediaGalleryImages(){
         $imageImport = $this->getCustomAttributes('image_import');
+        echo $imageImport; die;
         if($imageImport){
             $url = $imageImport->getValue();
             if($url && $this->_checkExistUrl($url)){
