@@ -12,19 +12,19 @@ use Magento\Framework\Filesystem\IoInterface;
 require __DIR__ . '/app/bootstrap.php';
 $bootstrap = Bootstrap::create(BP, $_SERVER);
 
-//ini_set('display_errors', 1);
-//umask(0);
-//
-//set_time_limit(0);
-//ini_set('memory_limit', '1024M');
-//
-//function is_cli(){
-//    return php_sapi_name() === 'cli';
-//}
-//
-//if(!is_cli()){
-//    die("Forbidden in HTTP mode");
-//}
+ini_set('display_errors', 1);
+umask(0);
+
+set_time_limit(0);
+ini_set('memory_limit', '1024M');
+
+function is_cli(){
+    return php_sapi_name() === 'cli';
+}
+
+if(!is_cli()){
+    die("Forbidden in HTTP mode");
+}
 
 
 $file = 'moonfile.csv';
