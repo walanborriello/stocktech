@@ -1,0 +1,26 @@
+<?php
+$_product = $block->getProduct(); // GET THE PRODUCT
+?>
+
+<div class="wdm-social-icons" data-role="wdm-social-icons">
+
+<!-- FACEBOOK -->
+<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($_product->getProductUrl());?>&t=<?php echo urlencode($_product->getName())?>" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on FaceBook">
+<i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+</a>
+
+<!-- TWITTER -->
+<a href="http://twitter.com/home/?status=<?php echo urlencode($_product->getProductUrl());?>(<?php echo urlencode($_product->getName())?>)" onclick='javascript:window.open(this.href,"","width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes");return false' title="Share on Twitter"><i class="fa fa-twitter fa-2x"  aria-hidden="true" style="color: #1da1f2;"></i>
+</a>
+
+<a href="javascript:(
+function(){
+var w=480;var h=380;
+var x=Number((window.screen.width-w)/2);
+var y=Number((window.screen.height-h)/2);
+window.open('https://plus.google.com/share?url='+encodeURIComponent(location.href)+'
+  &amp;title='+encodeURIComponent(document.title),'','width='+w+',height='+h+',left='+x+',top='+y+',
+  scrollbars=no');
+  })();"><i class="fa fa-google-plus fa-2x" aria-hidden="true" style="color:red"></i></a>
+
+</div>

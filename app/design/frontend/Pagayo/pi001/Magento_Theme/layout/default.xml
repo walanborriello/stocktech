@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    <!-- Header
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+        <!-- Note: "header-wrapper" is a default container for default blocks: logo, top links, search, minicart.
+             All these blocks were moved to the new base header container. 
+             But we may still need to display "header-wrapper" in case custom code adds there some blocks. -->
+        <move element="top.search" destination="page.top" after="catalog.topnav" />
+		<move element="top.links" destination="top.search" after="-" />
+		<move element="page.main.title" destination="content" before="-"/>
+		<move element="category.description" destination="content" before="category.products" />
+		<move element="minicart" destination="top.links" />
+		<referenceBlock name="authorization-link" remove="true" />
+		<referenceBlock name="privacy-policy-link" remove="true"/>
+		<referenceBlock name="search-term-popular-link" remove="true"/>
+		<referenceBlock name="contact-us-link" remove="true"/>
+		<referenceBlock name="catalog-search-advanced-link" remove="true"/>
+		<referenceBlock name="sales-guest-form-link" remove="true"/>
+		<referenceBlock name="catalog.compare.sidebar" remove="true"/>
+		<referenceBlock name="wishlist_sidebar" remove="true"/>
+		
+		<referenceContainer name="sidebar.additional">
+	   <block class="Magento\Cms\Block\Block" name="banner-right">
+		   <arguments>
+				<argument name="block_id" xsi:type="string">banner-right</argument>
+		   </arguments>
+	   </block>
+	</referenceContainer>
+		
+		
+		<referenceContainer name="header.container">
+		<block class="Magento\Customer\Block\Account\Navigation" name="top.links">
+                        <arguments>
+                            <argument name="css_class" xsi:type="string">headertop links</argument>
+                        </arguments>
+                    </block>
+        </referenceContainer>
+		
+		<referenceContainer name="page.bottom">
+            <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="Magento_Newsletter::subscribe.phtml"/>
+        </referenceContainer>
+		<referenceContainer name="footer-container">
+		<block class="Magento\Cms\Block\Block" name="block_footer_links">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">footer_container</argument>
+                    </arguments>
+                </block>
+        </referenceContainer>
+    </body>
+</page>

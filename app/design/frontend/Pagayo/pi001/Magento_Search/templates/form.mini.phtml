@@ -1,0 +1,40 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+$helper = $this->helper('Magento\Search\Helper\Data');
+?>
+<div class="quick-access-container">
+<div class="quick-access">
+        <form class="form minisearch" id="search_mini_form" action="<?php echo $helper->getResultUrl() ?>" method="get">
+            <div class="field search form-search">
+                    <input id="search"
+                           data-mage-init='{"quickSearch":{
+                                "formSelector":"#search_mini_form",
+                                "url":"<?= /* @escapeNotVerified */ $block->getUrl('search/ajax/suggest', ['_secure' => $block->getRequest()->isSecure()]) ?>",
+                                "destinationSelector":"#search_autocomplete"}
+                           }'
+                           type="text"
+                           name="<?= /* @escapeNotVerified */ $helper->getQueryParamName() ?>"
+                           value="<?= /* @escapeNotVerified */ $helper->getEscapedQueryText() ?>"
+                           placeholder="<?= /* @escapeNotVerified */ __('Search entire store here...') ?>"
+                           class="input-text customformsearch"
+                           maxlength="<?= /* @escapeNotVerified */ $helper->getMaxQueryLength() ?>"
+                           role="combobox"
+                           aria-haspopup="false"
+                           aria-autocomplete="both"
+                           autocomplete="off"/>
+						   <button type="submit" title="<?= $block->escapeHtml(__('Search')) ?>" class="button catalogsearch"><span><span><?= /* @escapeNotVerified */ __('Search') ?></span></span></button>
+                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                    <?= $block->getChildHtml() ?>
+				
+            </div>
+        </form>
+</div>
+</div>
+<div class="custom_breadcrumb">
+<?php echo $this->getLayout()->getBlock('breadcrumbs')->toHtml(); ?>
+</div>
