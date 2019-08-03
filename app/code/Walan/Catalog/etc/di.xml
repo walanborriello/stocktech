@@ -4,4 +4,6 @@
     <preference for="Magento\Catalog\Helper\Image" type="Walan\Catalog\Helper\Image"/>
     <preference for="Magento\Catalog\Block\Product\View\Gallery" type="Walan\Catalog\Block\Product\View\Gallery"/>
     <preference for="Magento\Catalog\Model\Product" type="Walan\Catalog\Model\Product"/>
+    <preference for="Magento\Catalog\Block\Product\ImageFactory" type="Walan\Catalog\Block\Product\ImageFactory"/>
+
 </config>
