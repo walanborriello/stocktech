@@ -271,6 +271,9 @@ function getCategories($obj, $data){
     $categories = null;
     $catNames = explode(' > ', $data);
     foreach($catNames as $catName){
+        if("PER L'UFFICIO" == $catName){
+            $catName = 'UFFICIO';
+        }
         if($cat = getCategoryId($obj, $catName)){
             $categories[] = (int)$cat;
         }
