@@ -135,6 +135,9 @@ function createCategories($objectManager, $catName, $level, $parentId){
     $leve2Id = null;
     $category = $objectManager->create('Magento\Catalog\Model\Category');
     if($level == 1){
+        if($catName == "PER L'UFFICIO"){
+            $catName = "UFFICIO";
+        }
         $cate = $category->getCollection()->addAttributeToFilter('name', $catName)->getFirstItem();
         if(!$cate->getId()){
             $id = createCat($objectManager, $catName, 2, $storeId);
