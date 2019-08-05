@@ -6,6 +6,8 @@
  * Time: 16:54
  */
 
+declare(strict_types=1);
+
 namespace Walan\Catalog\Block\Product;
 
 use Magento\Catalog\Block\Product\Image as ImageBlock;
@@ -15,23 +17,36 @@ use Magento\Catalog\Model\View\Asset\ImageFactory as AssetImageFactory;
 use Magento\Catalog\Model\View\Asset\PlaceholderFactory;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\View\ConfigInterface;
+use Magento\Catalog\Helper\Image as ImageHelper;
+use Magento\Catalog\Helper\ImageFactory as HelperFactory;
+use Magento\Framework\View\Asset\Repository;
 
-class ImageBuilder extends \Magento\Catalog\Block\Product\ImageFactory{
-
+class ImageFactory extends \Magento\Catalog\Block\Product\ImageFactory{
     private $presentationConfig;
     private $imageParamsBuilder;
     private $viewAssetPlaceholderFactory;
     private $viewAssetImageFactory;
     private $objectManager;
+    /**
+     * @var HelperFactory
+     */
+    protected $helperFactory;
 
-    public function __construct(ObjectManagerInterface $objectManager, ConfigInterface $presentationConfig, AssetImageFactory $viewAssetImageFactory, PlaceholderFactory $viewAssetPlaceholderFactory, ParamsBuilder $imageParamsBuilder){
+    /**
+     * @var Repository
+     */
+    protected $assetRepos;
+
+    public function __construct(ObjectManagerInterface $objectManager, ConfigInterface $presentationConfig, AssetImageFactory $viewAssetImageFactory, PlaceholderFactory $viewAssetPlaceholderFactory, ParamsBuilder $imageParamsBuilder,HelperFactory $helperFactory,
+                                Repository $repository){
         parent::__construct($objectManager, $presentationConfig, $viewAssetImageFactory, $viewAssetPlaceholderFactory, $imageParamsBuilder);
         $this->presentationConfig = $presentationConfig;
         $this->imageParamsBuilder = $imageParamsBuilder;
         $this->viewAssetImageFactory = $viewAssetImageFactory;
         $this->viewAssetPlaceholderFactory = $viewAssetPlaceholderFactory;
         $this->objectManager = $objectManager;
-
+        $this->assetRepos = $repository;
+        $this->helperFactory = $helperFactory;
     }
 
     public function create(Product $product, string $imageId, array $attributes = null) :ImageBlock{
@@ -106,12 +121,33 @@ class ImageBuilder extends \Magento\Catalog\Block\Product\ImageFactory{
     }
 
     protected function getImageUrlImported($product, $imageAsset){
-        if(strpos('placeholder', $imageAsset->getUrl()) !== false){
-            if(!$url = $product->getImageImport()){
-                $url = $imageAsset->getUrl();
-            }
+        if($this->_checkExistUrl($product->getImageImport())){
+            $url = $product->getImageImport();
+        }else {
+            $url = $this->getPlaceHolderImage();
         }
         return $url;
+    }
+
+    public function getPlaceHolderImage()
+    {
+        /** @var \Magento\Catalog\Helper\Image $helper */
+        $helper = $this->helperFactory->create();
+        return $this->assetRepos->getUrl($helper->getPlaceholder('small_image'));
+    }
+
+
+    private function _checkExistUrl($url){
+        $return = false;
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+        $response = curl_exec($handle);
+        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+        if($httpCode == 200){
+            $return = true;
+        }
+        curl_close($handle);
+        return $return;
     }
 
 }
