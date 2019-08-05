@@ -77,7 +77,7 @@ class ImageFactory extends \Magento\Catalog\Block\Product\ImageFactory{
         $data = [
             'data' => [
                 'template' => 'Magento_Catalog::product/image_with_borders.phtml',
-                'image_url' => $this->getImageUrlImported($product, $imageAsset),
+                'image_url' => $this->getImageUrlImported($product),
                 'width' => $imageMiscParams['image_width'],
                 'height' => $imageMiscParams['image_height'],
                 'label' => $this->getLabel($product, $imageMiscParams['image_type']),
@@ -120,7 +120,7 @@ class ImageFactory extends \Magento\Catalog\Block\Product\ImageFactory{
         return !empty($result) ? implode(' ', $result) : '';
     }
 
-    protected function getImageUrlImported($product, $imageAsset){
+    protected function getImageUrlImported($product){
         if($this->_checkExistUrl($product->getImageImport())){
             $url = $product->getImageImport();
         }else {
