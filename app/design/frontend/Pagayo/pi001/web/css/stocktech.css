@@ -27260,3 +27260,7 @@ li.level0.nav-1.category-item.first.level-top.parent.ui-menu-item {
     margin: 0 auto;
     width: auto;
 }
+
+#search_stiky {
+    border-radius: 4px;
+}

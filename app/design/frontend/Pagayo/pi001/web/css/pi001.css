@@ -166,13 +166,10 @@ display:none;
     /*border-left: 1px solid #999;*/
 }
 .navigation ul {
-    background-color: #467C3E;
+    background-color: #202A38;
     padding: 0px;
 }
-.navigation li{
-    background-color: #467C3E;
-    /*padding: 0 9px;*/
-}
+
 .navigation a {
     font-weight: bold;
     padding: 0 12px !important;
@@ -207,6 +204,7 @@ padding: 6px 9px !important;
 background-color: #eee !important;
 }
 .navigation ul li a:hover {
+    color: #202A38;
     background-color: #EDCC77;
 }
 .submenu li a {
