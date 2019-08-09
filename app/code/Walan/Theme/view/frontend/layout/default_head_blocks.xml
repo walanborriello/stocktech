@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+
+        <!-- Font -->
+        <css src="https://fonts.googleapis.com/css?family=Barlow:400,600,700,800,900" src_type="url"/>
+        <css src="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800" src_type="url" />
+        <css src="https://fonts.googleapis.com/css?family=Lato:400,700" src_type="url"/>
+
+        <css src="css/styles-m.css"/>
+        <css src="css/styles-l.css" media="screen and (min-width: 768px)"/>
+
+        <!-- Bootstrap -->
+        <css src="css/stocktech.css" media="all"/>
+
+        <!-- Temp CSS -->
+        <!--<css src="css/temp.css" media="all"/>-->
+
+    </head>
+</page>

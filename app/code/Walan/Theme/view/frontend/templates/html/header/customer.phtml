@@ -1,0 +1,52 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var Magento\Customer\Block\Account\Customer $block */
+?>
+<?php if($block->customerLoggedIn()): ?>
+    <li class="customer-welcome">
+        <span class="info__title customer-name"
+              role="link"
+              tabindex="0"
+              data-mage-init='{"dropdown":{}}'
+              data-toggle="dropdown"
+              data-trigger-keypress-button="true"
+              data-bind="scope: 'customer'">
+            <div class="info__icon bm-icon-user"></div>
+            <div class="info__title"><?= __('Personal Area') ?></div>
+        </span>
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+
+
+        </script>
+        <?php if($block->getChildHtml()): ?>
+            <div class="customer-menu" data-target="dropdown">
+                <?= $block->getChildHtml() ?>
+            </div>
+        <?php endif; ?>
+    </li>
+<?php else: ?>
+    <li class="customer-welcome">
+        <a href="<?= $block->getUrl('customer/account/login/'); ?>" title="<?= __('Login'); ?>">
+            <span class="info__title customer-name">
+                <div class="info__icon bm-icon-user"></div>
+                <div class="info__title"><?= __('Login/Registration'); ?></div>
+            </span>
+        </a>
+    </li>
+<?php endif; ?>

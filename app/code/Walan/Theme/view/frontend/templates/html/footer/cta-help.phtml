@@ -1,0 +1,20 @@
+<?php
+$helper = $this->helper(\Walan\Theme\Helper\Data::class);
+if($helper->getVisibilityHelpFaq()):
+    ?>
+    <div class="block help">
+        <div class="help__wrapper">
+            <div class="help__title">
+                <?= __('Do you need help?'); ?>
+            </div>
+            <div class="help__subtitle">
+                <?= __('Find the solution for you'); ?>
+            </div>
+            <div class="actions">
+                <a class="action subscribe primary" href="<?= $this->getUrl('faq/page/'); ?>" title="Subscribe">
+                    <?= __('Frequent questions'); ?>
+                </a>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

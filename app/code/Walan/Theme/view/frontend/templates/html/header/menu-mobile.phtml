@@ -1,0 +1,145 @@
+<?php
+/** @var Walan\Theme\Block\Header\Menu $block */
+?>
+<?php $customerSession = $block->checkLoggedIn(); ?>
+<?php $rootCategories = $block->getAllCategory(); ?>
+<script>
+
+    require(["jquery"], function ($) {
+
+        $("#mp-pusher .bm_close-menu-mobile").on("click", function (event) {
+            var level = $("#mp-pusher").find(".mp-level");
+            $(level).removeClass("mp-level-open");
+
+            $("#mp-pusher").removeClass("mp-pushed");
+
+            //$("#mp-pusher").css("transform" , "translate3d(0px, 0px, 0px)");
+
+        });
+
+    });
+</script>
+
+<!-- Push Wrapper -->
+<div class="mp-pusher" id="mp-pusher" style="display: none">
+    <nav id="mp-menu" class="mp-menu">
+        <div class="mp-level">
+            <h2>
+                <span class="bm_vertical-text">
+                    <?= __('Menu'); ?>
+                </span>
+            </h2>
+            <?php if ($customerSession): ?>
+                <a href="<?= $this->getUrl('customer/account/logout'); ?>">
+                    <?= __('Logout'); ?>
+                </a>
+            <?php endif; ?>
+            <span class="bm-icon-plus bm_close-menu-mobile">
+            </span>
+            <ul>
+                <?php if ($rootCategories): ?>
+                    <li class="icon icon-arrow-left">
+                        <a class="icon icon-display" href="#"><?= __('Products'); ?></a>
+                        <div class="mp-level">
+                            <h2 class="icon icon-display">
+                                <span class="bm_vertical-text">
+                                    <?= __('Products'); ?>
+                                </span>
+                            </h2>
+                            <a class="mp-back" href="#"></a>
+                            <span class="bm-icon-plus bm_close-menu-mobile">
+                            </span>
+                            <div class="bm_scroll-menu">
+                                <ul>
+                                    <?php // Category First Level ?>
+                                    <?php foreach ($rootCategories as $rootCategory): ?>
+                                        <li class="icon icon-arrow-left">
+                                            <a class="icon icon-phone" href="#"><?= $rootCategory['name']; ?></a>
+
+                                            <?php if (count($block->getAllCategoryByParam($rootCategory['children'])) > 0): ?>
+                                                <?php $childrenCategories = $block->getAllCategoryByParam($rootCategory['children']); ?>
+                                                <div class="mp-level">
+                                                    <h2>
+                                                        <span class="bm_vertical-text">
+                                                            <?= $rootCategory['name']; ?>
+                                                        </span>
+                                                    </h2>
+                                                    <a class="mp-back" href="#"></a>
+                                                    <span class="bm-icon-plus bm_close-menu-mobile"></span>
+
+                                                    <div class="bm_category-link">
+                                                        <a href="<?= $rootCategory['link']; ?>">
+                                                            <?= __('See all categories of'); ?> <?= $rootCategory['name']; ?>
+                                                        </a>
+                                                    </div>
+                                                    <div class="bm_scroll-menu_second">
+                                                        <ul>
+                                                            <?php foreach ($childrenCategories as $childrenCategory): ?>
+                                                                <li>
+                                                                    <a href="#"><?= $childrenCategory['name']; ?></a>
+                                                                    <?php if (count($block->getAllCategoryByParam($rootCategory['children'])) > 0): ?>
+                                                                        <?php $grandChildrenCategories = $block->getAllCategoryByParam($childrenCategory['children']); ?>
+                                                                        <div class="mp-level">
+                                                                            <a class="mp-back" href="#">
+
+                                                                            </a>
+
+                                                                            <div class="vt_mLITitle">
+                                                                        <span class="bm_vertical-text">
+                                                                            <?= $childrenCategory['name']; ?>
+                                                                        </span>
+                                                                            </div>
+
+                                                                            <span class="bm-icon-plus bm_close-menu-mobile">
+                                                                            </span>
+
+
+                                                                            <div class="bm_category-link">
+                                                                                <a href="<?= $childrenCategory['link']; ?>">
+                                                                                    <?= __('See all categories of'); ?>  <?= $childrenCategory['name']; ?>
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="bm_scroll-menu_third">
+                                                                                <ul>
+                                                                                    <?php
+                                                                                    foreach ($grandChildrenCategories as $grandChildCategory): ?>
+                                                                                        <li>
+                                                                                            <a href="<?= $grandChildCategory['link']; ?>">
+                                                                                                <?= $grandChildCategory['name']; ?>
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    <?php
+                                                                                    endforeach; ?>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    <?php endif; ?>
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="icon icon-arrow-left">
+                        <a class="icon icon-display" href="<?= $this->getUrl("stores"); ?>"><?= __('Our stores'); ?></a>
+                    </li>
+                    <li class="icon icon-arrow-left">
+                        <a class="icon icon-display"
+                           href="<?= $this->getUrl("brands/listing/display"); ?>"><?= __('Our brands'); ?></a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </nav>
+</div><!-- /pusher -->
+<script>
+    new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger-menu-mobile'), {
+        type: 'cover'
+    });
+</script>

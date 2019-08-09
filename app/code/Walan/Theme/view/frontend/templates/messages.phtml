@@ -1,0 +1,69 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+
+<div data-bind="scope: 'messages'">
+    <!-- ko if: cookieMessages && cookieMessages.length > 0 && cookieMessages !== undefined -->
+    <div role="alert" data-bind="foreach: { data: cookieMessages, as: 'message' }" class="messages">
+        <div data-bind="attr: {
+                class: 'bm-row bm-row--' + message.type}">
+            <div class="container">
+                <div class="row" data-bind="attr: {'data-ui-id': 'message-' + message.type + '-' + $index() + 1}">
+                    <div class="bs-col-md-11 bs-col-xs-10">
+                        <div data-bind="attr: {class: 'message-' + message.type + ' ' + message.type + ' message'}">
+                            <div data-bind="html: message.text"></div>
+                        </div>
+                    </div>
+                    <div class="bs-col-md-1 bs-col-xs-2">
+                        <div class="message__icon-close">
+                            <span class="bm-icon-delete"
+                                  data-bind="attr: {'data-ui-id': 'message-' + message.type + '-' + $index() + 1}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+
+
+    <!-- ko if: messages().messages && messages().messages.length > 0 && messages().messages !== undefined -->
+    <div data-bind="foreach: { data: messages().messages, as: 'message' }">
+        <div data-bind="attr: {
+                class: 'bm-row bm-row--' + message.type}">
+            <div class="container">
+                <div class="row">
+                    <div class="bs-col-md-11 bs-col-xs-10">
+                        <div data-bind="attr: {class: 'message-' + message.type + ' ' + message.type + ' message'}">
+                            <div data-bind="html: message.text"></div>
+                        </div>
+                    </div>
+                    <div class="bs-col-md-1 bs-col-xs-2">
+                        <div class="message__icon-close">
+                            <span class="bm-icon-delete"
+                                  data-bind="attr: {'data-ui-id': 'message-' + message.type + '-' + $index() + 1}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                        "messages": {
+                            "component": "Magento_Theme/js/view/messages"
+                        }
+                    }
+                }
+            }
+    }
+
+</script>

@@ -1,0 +1,14 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// Walan\Theme\Block\Html\Hello
+
+$getUserData = $block->getCustomerData(); ?>
+<?php if($getUserData): ?>
+    <div class="sidebar-hello">
+        <span class="title-ten"><?= __('Hello') . ' ' . $getUserData['firstName'] . '!'; ?></span>
+    </div>
+<?php endif; ?>

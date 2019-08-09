@@ -1,0 +1,53 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+?>
+<div class="info">
+    <div data-block="minicart" class="minicart-wrapper minicart-wrapper--desktop">
+        <script>
+            window.checkout = <?= /* @escapeNotVerified */ $block->getSerializedConfig() ?>;
+        </script>
+        <script type="text/x-magento-init">
+        {
+            "[data-block='minicart']": {
+                "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */
+            $block->getJsLayout() ?>
+            },
+            "*": {
+                "Magento_Ui/js/block-loader": "<?= /* @escapeNotVerified */
+            $block->getViewFileUrl('images/loader-1.gif') ?>"
+            }
+        }
+
+
+        </script>
+
+
+            <a class="showcart" href="<?= /* @escapeNotVerified */
+            $block->getShoppingCartUrl() ?>"
+               data-bind="scope: 'minicart_content'">
+
+                <div class="info__icon bm-icon-icon-cart-header js-event-dropdown"></div>
+                <div class="js-event-dropdown" data-bind="scope: 'minicart_content'">
+                    <div class="info__title"><?= /* @escapeNotVerified */
+                        __('My Cart') ?></div>
+
+                    <div class="counter qty empty"
+                         data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
+
+                        <div class="info__num">
+                            <!-- ko if: getCartParam('summary_count') -->
+                            <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </a>
+    </div>
+</div>

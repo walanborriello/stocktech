@@ -1,0 +1,127 @@
+<?php
+/** @var Walan\Theme\Block\Header\Menu $block */
+
+$rootCategories = $block->getRootCategories();
+
+?>
+
+    <nav class="navigation" data-action="navigation">
+        <div class="bottom">
+            <div class="bottom__first <?php  echo (!$rootCategories ? 'bottom__first--no-hover' : '') ?> ">
+                <?php if ($rootCategories): ?>
+                <span class="label-bottom"> <?= __('Products'); ?>
+                    <div class="container-mega-menu">
+                        <nav class="nav">
+                            <ul class="first-level">
+
+                                <?php // Category First Level ?>
+                                <?php foreach ($rootCategories as $rootCategory): ?>
+                                    <li class="elem-li"
+                                        data-content="<?= $rootCategory['name']; ?>">
+                                        <a href="<?= $rootCategory['link']; ?>" title="<?= $rootCategory['name']; ?>">
+                                            <!-- @TODO: Bisogna prendere l'icona della categoria da un attributo da creare -->
+                                            <span class="bm-icon-search elem-li__icon"></span>
+                                            <div class="elem-li__label">
+                                                <?= $rootCategory['name']; ?>
+                                            </div>
+                                        </a>
+                                        <?php // Category Second Level ?>
+                                        <?php if (count($block->getAllCategoryByParam($rootCategory['children'])) > 0): ?>
+
+                                            <?php $childrenCategories = $block->getAllCategoryByParam($rootCategory['children']); ?>
+
+                                            <ul class="second-level">
+                                                <?php $counterSecondLevel = 0; ?>
+                                                <?php foreach ($childrenCategories as $childrenCategory): ?>
+                                                    <li class="elem-li data-layer-second-level"
+                                                        data-content="<?= $childrenCategory['name']; ?>">
+                                                        <a href="<?= $childrenCategory['link']; ?>"
+                                                           title="<?= $childrenCategory['name']; ?>">
+                                                            <div class="elem-li__label">
+                                                                <?= $childrenCategory['name']; ?>
+                                                            </div>
+                                                        </a>
+                                                        <?php // Category Third Level ?>
+                                                        <?php if (count($block->getAllCategoryByParam($childrenCategory['children'])) > 0) : ?>
+                                                            <?php $grandChildrenCategories = $block->getAllCategoryByParam($childrenCategory['children']); ?>
+                                                            <ul class="third-level">
+
+                                                                <?php $counterThirdLevel = 0; ?>
+                                                                <?php foreach ($grandChildrenCategories as $grandChildrenCategory): ?>
+                                                                    <li class="elem-li data-layer-third-level"
+                                                                        data-content="<?= $grandChildrenCategory['name']; ?>">
+                                                                        <a href="<?= $grandChildrenCategory['link']; ?>"
+                                                                           title="<?= $grandChildrenCategory['name']; ?>">
+                                                                            <div class="elem-li__label">
+                                                                                <?= $grandChildrenCategory['name']; ?>
+                                                                            </div>
+                                                                        </a>
+                                                                    </li>
+
+
+                                                                <?php $counterThirdLevel++; ?>
+                                                                <?php if ($counterThirdLevel === 30): ?>
+                                                                        <li class="elem-li data-layer-third-level"
+                                                                            data-content="<?= __('Other categories'); ?>">
+                                                                            <a href="<?= $childrenCategory['link']; ?>"
+                                                                               title="<?= __('Other categories'); ?>">
+                                                                                <div class="elem-li__label">
+                                                                                    <?= __('Other categories'); ?>
+                                                                                </div>
+                                                                            </a>
+                                                                        </li>
+                                                                        <?php break; ?>
+                                                                    <?php endif; ?>
+                                                                <?php endforeach; ?>
+                                                            </ul>
+                                                        <?php endif; ?>
+                                                    </li>
+                                                    <?php $counterSecondLevel++; ?>
+                                                    <?php if ($counterSecondLevel === 30): ?>
+                                                        <li class="elem-li data-layer-second-level"
+                                                            data-content="<?= __('Other categories'); ?>">
+                                                            <a href="<?= $rootCategory['link']; ?>"
+                                                               title="<?= __('Other categories'); ?>">
+                                                                <div class="elem-li__label">
+                                                                    <?= __('Other categories'); ?>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        <?php break; ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+
+                                            </ul>
+                                        <?php endif; ?>
+
+                                    </li>
+                                <?php endforeach; ?>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </span>
+                <?php endif; ?>
+            </div>
+        </div>
+    </nav>
+
+
+<script type="text/x-magento-init">
+   {
+      "*": {
+              "Magento_Ui/js/core/app": {
+                     "components": {
+                          "navigation_hover": {
+                              "component": "Walan_Theme/js/customjs/hover"
+                          }
+                     }
+               }
+         }
+    }
+
+
+
+
+
+</script>

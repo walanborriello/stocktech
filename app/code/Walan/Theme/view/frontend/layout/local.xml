@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customer_account translate="label">
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Home</crumbname>
+                <crumbinfo>
+                    <label>Home</label>
+                    <title>Home</title>
+                    <link />/
+                </crumbinfo>
+            </action>
+            <action method="addCrumb">
+                <crumbname>My Account</crumbname>
+                <crumbinfo>
+                    <label>My Account</label>
+                    <title>My Account</title>
+                    <link />/customer/account/
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_account>
+    <customer_account_index translate="label">
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Dashboard</crumbname>
+                <crumbinfo>
+                    <label>Dashboard</label>
+                    <title>Dashboard</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_account_index>
+    <customer_address_form translate="label">
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Address Book</crumbname>
+                <crumbinfo>
+                    <label>Address Book</label>
+                    <title>Address Book</title>
+                    <link />/customer/address/
+                </crumbinfo>
+            </action>
+            <action method="addCrumb">
+                <crumbname>Add/Edit Address</crumbname>
+                <crumbinfo>
+                    <label>Add/Edit Address</label>
+                    <title>Add/Edit Address</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_address_form>
+    <customer_account_edit translate="label">
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>Account Information</crumbname>
+                <crumbinfo>
+                    <label>Account Information</label>
+                    <title>Account Information</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </customer_account_edit>
+    <review_customer_index translate="label">
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>My Product Reviews</crumbname>
+                <crumbinfo>
+                    <label>My Product Reviews</label>
+                    <title>My Product Reviews</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </review_customer_index>
+    <tag_customer_index translate="label">
+        <reference name="breadcrumbs">
+            <action method="addCrumb">
+                <crumbname>My Tags</crumbname>
+                <crumbinfo>
+                    <label>My Tags</label>
+                    <title>My Tags</title>
+                </crumbinfo>
+            </action>
+        </reference>
+    </tag_customer_index>
+</layout>

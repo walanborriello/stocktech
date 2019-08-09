@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default_head_blocks"/>
+
+    <move element="bodyinfo" destination="before.body.end"/>
+
+
+    <body>
+
+
+        <referenceContainer name="header-wrapper" remove="true"/>
+
+        <move element="content.top" destination="main" before="-"/>
+
+
+        <referenceContainer name="header.container">
+            <container name="bm.header.top-header-wrapper" htmlTag="div" htmlClass="header content" before="-">
+                <container name="bm.header.top" htmlTag="div" htmlClass="top">
+
+                    <!-- Burger menu mobile -->
+                    <block class="Magento\Framework\View\Element\Template" name="bm.burger.menu"
+                           template="Walan_Theme::html/header/burger-menu.phtml"/>
+
+                    <!-- LOGO -->
+                    <block class="Magento\Theme\Block\Html\Header\Logo" template="Walan_Theme::html/header/logo.phtml"
+                           name="bm.logo" after="bm.burger.menu">
+                        <arguments>
+                            <argument name="logo_file" xsi:type="string">images/logo/logo.png</argument>
+                            <argument name="logo_alt" xsi:type="string">Stocktech</argument>
+                            <argument name="logo_mobile" xsi:type="string">images/logoMobile/logo-m@3x.png</argument>
+                        </arguments>
+                    </block>
+
+
+                    <!-- TOP RIGHT AREA -->
+                    <container name="bm.header.top.right" htmlTag="div" htmlClass="top__right" after="bm.logo">
+                        <block class="Magento\Store\Block\Switcher" name="bm.store.language"
+                               template="switch/languages.phtml"/>
+
+                        <!-- CHILDREN ITEM BLOCK TOP AREA-->
+                        <block class="Magento\Customer\Block\Account\Navigation" name="bm.top.links">
+                            <arguments>
+                                <argument name="css_class" xsi:type="string">header links</argument>
+                            </arguments>
+                        </block>
+
+
+                        <block class="Magento\Customer\Block\Account\Navigation" name="bm.top.links.not.logged">
+                            <!--
+                            <div class="info__icon bm-icon-user"></div>
+                            <div class="info__title"><?= __('Personal area'); ?></div>
+                            -->
+
+                            <!--<arguments>
+                                <argument name="css_class" xsi:type="string">header links</argument>
+                            </arguments>-->
+                        </block>
+
+                        <!-- Personal Area -->
+                        <container name="bm.personal.area.wrapper" htmlTag="div" htmlClass="info">
+
+                            <container name="bm.dropdown.personal.area" htmlTag="div"
+                                       htmlClass="info__personal-area-wrapper">
+                                <block class="Magento\Framework\View\Element\Html\Links" name="bm.header.links"
+                                       before="-">
+                                    <arguments>
+                                        <argument name="css_class" xsi:type="string">header links</argument>
+                                    </arguments>
+                                </block>
+
+
+                                <referenceBlock name="bm.header.links">
+                                    <block class="Magento\Customer\Block\Account\Customer"
+                                           name="bm.customer"
+                                           template="Walan_Theme::html/header/customer.phtml"
+                                           before="-"/>
+                                </referenceBlock>
+                            </container>
+                        </container>
+
+                        <!-- Wishlist -->
+                        <block class="Walan\Theme\Block\Html\ItemHeader" name="bm.wishlist"
+                               template="Walan_Theme::html/header/wishlist.phtml" cacheable="false"/>
+
+                        <block class="Walan\Theme\Block\Html\ItemHeader" name="bm.minicart"
+                               template="Walan_Theme::html/header/minicart.phtml" cacheable="false"/>
+
+                    </container>
+                </container>
+
+
+
+                <!-- MENU MOBILE -->
+                <block name="bm.menu.mobile" class="Walan\Theme\Block\Header\Menu"
+                       template="Walan_Theme::html/header/menu-mobile.phtml" after="-"/>
+            </container>
+            <!-- MAIN NAVIGATION -->
+            <!--<referenceBlock name="store.menu">-->
+                <!--<block name="bm.catalog.topnav" class="Walan\Theme\Block\Header\Menu"-->
+                       <!--template="Walan_Theme::html/header/navigation.phtml" before="-"/>-->
+            <!--</referenceBlock>-->
+            <!--<block class="Magento\Framework\View\Element\Template" name="store.menu" group="navigation-sections" template="Magento_Theme::html/container.phtml">-->
+                <!--<arguments>-->
+                    <!--<argument name="title" translate="true" xsi:type="string">Menu</argument>-->
+                <!--</arguments>-->
+                <!--<block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="Magento_Theme::html/topmenu.phtml" ttl="3600" before="-"/>-->
+            <!--</block>-->
+
+            <referenceBlock name="skip_to_content" remove="true"/>
+
+            <!-- @TODO: Commentare per search -->
+            <!--<referenceContainer name="header.panel.wrapper" remove="true"/>-->
+        </referenceContainer>
+
+
+
+
+        <move element="catalog.topnav" destination="top.search" after="-"/>
+
+        <!-- Move children element inside bm.customer (dropdown) -->
+        <move element="bm.top.links" destination="bm.customer" after="-"/>
+
+
+        <referenceContainer name="content">
+            <referenceBlock name="category.product.addto.wishlist" remove="true"/>
+        </referenceContainer>
+
+        <referenceContainer name="columns.top">
+            <block class="Magento\Theme\Block\Html\Title" name="page.main.title"
+                   template="Magento_Theme::html/title.phtml"/>
+            <!--<container name="page.messages" htmlTag="div" htmlClass="page messages">
+                <block class="Magento\Framework\View\Element\Template" name="ajax.message.placeholder" template="Magento_Theme::html/messages.phtml"/>
+                <block class="Magento\Framework\View\Element\Messages" name="messages" as="messages" template="Walan_Theme::messages.phtml"/>
+            </container>-->
+        </referenceContainer>
+
+
+        <referenceBlock name="messages">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Walan_Theme::messages.phtml</argument>
+            </action>
+        </referenceBlock>
+
+
+        <referenceContainer name="footer-container">
+
+            <referenceBlock name="footer_links">
+                <referenceBlock name="privacy-policy-link" remove="true"/>
+                <referenceBlock name="search-term-popular-link" remove="true"/>
+                <referenceBlock name="contact-us-link" remove="true"/>
+                <referenceBlock name="catalog-search-advanced-link" remove="true"/>
+                <referenceBlock name="sales-guest-form-link" remove="true"/>
+
+                <block class="Magento\Framework\View\Element\Html\Link\Current" name="test">
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">test</argument>
+                        <argument name="path" xsi:type="string">test</argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+
+        </referenceContainer>
+
+        <referenceContainer name="footer">
+            <!--<referenceBlock name="stocktech.footer" remove="true"/>-->
+
+            <!-- Container First Row -->
+            <container name="bm.container-fluid.footer.first.row" htmlTag="div" htmlClass="first-row" after="footer"
+                       before="-">
+                <container name="bm.container.footer.first.row" htmlTag="div" htmlClass="container">
+                    <container name="bm.row.footer.first.row" htmlTag="div" htmlClass="row">
+                        <container name="bm.container.newsletter.footer" htmlTag="div" htmlClass="bs-col-md-9"/>
+                        <container name="bm.container.help.footer" htmlTag="div" htmlClass="bs-col-md-3">
+                            <block class="Magento\Framework\View\Element\Template" name="bm.help.footer" before="-"
+                                   template="Walan_Theme::html/footer/cta-help.phtml"/>
+                        </container>
+                    </container>
+                </container>
+            </container>
+
+            <!-- Container Fifth Row -->
+            <container name="bm.copyright.container">
+                <block class="Magento\Framework\View\Element\Template" name="bm.copyright" before="-"
+                       template="Walan_Theme::html/footer/copyright.phtml"/>
+            </container>
+
+        </referenceContainer>
+
+
+        <!-- Footer link -->
+        <move element="stocktech.footer" destination="bm.container.footer.fourth.row" before="-"/>
+
+        <!-- Messages container -->
+        <move element="page.messages" destination="columns" after="bm.container-fluid.title.wrapper"/>
+
+
+        <move element="minicart" destination="bm.header.top.right" after="bm.wishlist"/>
+
+        <!-- Remove compare and wishlist sidebar-->
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceBlock name="wish-list-link" remove="true"/>
+        <referenceContainer name="sidebar.additional" remove="true"/>
+
+    </body>
+</page>
