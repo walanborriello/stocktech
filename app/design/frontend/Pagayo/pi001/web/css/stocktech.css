@@ -27252,7 +27252,11 @@ table.dataTable tr.nested td {
 
 
 .navigation .level0 {
-    margin: 0 0 0 0;
     display: inline-block;
     position: relative;
+}
+
+li.level0.nav-1.category-item.first.level-top.parent.ui-menu-item {
+    margin: 0 auto;
+    width: auto;
 }

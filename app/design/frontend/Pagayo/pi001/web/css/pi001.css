@@ -165,10 +165,10 @@ display:none;
 .navigation .first a {
     /*border-left: 1px solid #999;*/
 }
-.navigation ul{
-    padding: 6px 0px;
+.navigation ul {
+    background-color: #467C3E;
+    padding: 0px;
 }
-
 .navigation li{
     background-color: #467C3E;
     /*padding: 0 9px;*/
@@ -182,7 +182,8 @@ display:none;
 
 }
 nav.navigation {
-    padding-left: 0px;
+    text-align: center;
+    padding: 6px 0px;
 }
 nav ul li .submenu {
     /*position: absolute !important;*/
