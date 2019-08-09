@@ -8,33 +8,45 @@
 $helper = $this->helper('Magento\Search\Helper\Data');
 ?>
 <div class="quick-access-container">
-<div class="quick-access">
+    <div class="quick-access">
         <form class="form minisearch" id="search_mini_form" action="<?php echo $helper->getResultUrl() ?>" method="get">
+
             <div class="field search form-search">
-                    <input id="search"
+                <div class="search__field-wrapper">
+                    <input id="search_stiky"
                            data-mage-init='{"quickSearch":{
-                                "formSelector":"#search_mini_form",
-                                "url":"<?= /* @escapeNotVerified */ $block->getUrl('search/ajax/suggest', ['_secure' => $block->getRequest()->isSecure()]) ?>",
-                                "destinationSelector":"#search_autocomplete"}
-                           }'
-                           type="text"
-                           name="<?= /* @escapeNotVerified */ $helper->getQueryParamName() ?>"
-                           value="<?= /* @escapeNotVerified */ $helper->getEscapedQueryText() ?>"
-                           placeholder="<?= /* @escapeNotVerified */ __('Search entire store here...') ?>"
-                           class="input-text customformsearch"
-                           maxlength="<?= /* @escapeNotVerified */ $helper->getMaxQueryLength() ?>"
+                        "formSelector":"#search_mini_form_stiky",
+                        "url":"<?= /* @escapeNotVerified */
+                           $helper->getSuggestUrl() ?>",
+                        "destinationSelector":"#search_autocomplete"}
+                   }'
+                           type="search"
+                           name="<?= /* @escapeNotVerified */
+                           $helper->getQueryParamName() ?>"
+                           value="<?= /* @escapeNotVerified */
+                           $helper->getEscapedQueryText() ?>"
+                           placeholder="<?= /* @escapeNotVerified */
+                           __('What are you looking for?') ?>"
+                           class="search__input"
+                           maxlength="<?= /* @escapeNotVerified */
+                           $helper->getMaxQueryLength() ?>"
                            role="combobox"
                            aria-haspopup="false"
                            aria-autocomplete="both"
                            autocomplete="off"/>
-						   <button type="submit" title="<?= $block->escapeHtml(__('Search')) ?>" class="button catalogsearch"><span><span><?= /* @escapeNotVerified */ __('Search') ?></span></span></button>
-                    <div id="search_autocomplete" class="search-autocomplete"></div>
-                    <?= $block->getChildHtml() ?>
-				
+                    <div ><?= $block->getChildHtml() ?> </div>
+                </div>
             </div>
         </form>
-</div>
+    </div>
 </div>
 <div class="custom_breadcrumb">
-<?php echo $this->getLayout()->getBlock('breadcrumbs')->toHtml(); ?>
+    <?php echo $this->getLayout()->getBlock('breadcrumbs')->toHtml(); ?>
 </div>
+<script type="text/x-magento-init">
+   {
+      "*": {
+              "Walan_Theme/js/customjs/hover": {}
+         }
+    }
+</script>
