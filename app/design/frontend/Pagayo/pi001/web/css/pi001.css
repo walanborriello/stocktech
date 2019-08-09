@@ -204,7 +204,7 @@ padding: 6px 9px !important;
 background-color: #eee !important;
 }
 .navigation ul li a:hover {
-    color: #202A38;
+    color: #202A38 !important;
     background-color: #EDCC77;
 }
 .submenu li a {
