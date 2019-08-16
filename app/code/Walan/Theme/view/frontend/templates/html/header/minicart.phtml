@@ -11,7 +11,7 @@
 <div class="info">
     <div data-block="minicart" class="minicart-wrapper minicart-wrapper--desktop">
         <script>
-            window.checkout = <?= /* @escapeNotVerified */ $block->getSerializedConfig() ?>;
+            window.checkout = <?php echo $block->getSerializedConfig() ?>;
         </script>
         <script type="text/x-magento-init">
         {

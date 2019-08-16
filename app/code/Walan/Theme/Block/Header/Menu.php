@@ -153,12 +153,12 @@ class Menu extends \Magento\Framework\View\Element\Template{
     //    }
     //
     //
-    //    public function getAllCategory()
-    //    {
-    //        list($allCategory, $cache) = []; //$this->view->getAllCategory();
-    //        return ['asd' => 'asd'];
-    //    }
-    //
+        public function getAllCategory()
+        {
+            list($allCategory, $cache) = []; //$this->view->getAllCategory();
+            return ['asd' => 'asd'];
+        }
+
     public function getAllCategoryByParam($children){
         return [];
     }

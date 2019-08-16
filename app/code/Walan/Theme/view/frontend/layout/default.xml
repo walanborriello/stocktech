@@ -18,17 +18,11 @@
             <container name="bm.header.top-header-wrapper" htmlTag="div" htmlClass="header content" before="-">
                 <container name="bm.header.top" htmlTag="div" htmlClass="top">
 
-                    <!-- Burger menu mobile -->
-                    <block class="Magento\Framework\View\Element\Template" name="bm.burger.menu"
-                           template="Walan_Theme::html/header/burger-menu.phtml"/>
 
-                    <!-- LOGO -->
-                    <block class="Magento\Theme\Block\Html\Header\Logo" template="Walan_Theme::html/header/logo.phtml"
-                           name="bm.logo" after="bm.burger.menu">
+                    <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
                         <arguments>
-                            <argument name="logo_file" xsi:type="string">images/logo/logo.png</argument>
-                            <argument name="logo_alt" xsi:type="string">Stocktech</argument>
-                            <argument name="logo_mobile" xsi:type="string">images/logoMobile/logo-m@3x.png</argument>
+                            <argument name="logo_img_width" xsi:type="number">189</argument>
+                            <argument name="logo_img_height" xsi:type="number">64</argument>
                         </arguments>
                     </block>
 
@@ -45,17 +39,6 @@
                             </arguments>
                         </block>
 
-
-                        <block class="Magento\Customer\Block\Account\Navigation" name="bm.top.links.not.logged">
-                            <!--
-                            <div class="info__icon bm-icon-user"></div>
-                            <div class="info__title"><?= __('Personal area'); ?></div>
-                            -->
-
-                            <!--<arguments>
-                                <argument name="css_class" xsi:type="string">header links</argument>
-                            </arguments>-->
-                        </block>
 
                         <!-- Personal Area -->
                         <container name="bm.personal.area.wrapper" htmlTag="div" htmlClass="info">
@@ -91,34 +74,17 @@
 
 
 
-                <!-- MENU MOBILE -->
-                <block name="bm.menu.mobile" class="Walan\Theme\Block\Header\Menu"
-                       template="Walan_Theme::html/header/menu-mobile.phtml" after="-"/>
             </container>
-            <!-- MAIN NAVIGATION -->
-            <!--<referenceBlock name="store.menu">-->
-                <!--<block name="bm.catalog.topnav" class="Walan\Theme\Block\Header\Menu"-->
-                       <!--template="Walan_Theme::html/header/navigation.phtml" before="-"/>-->
-            <!--</referenceBlock>-->
-            <!--<block class="Magento\Framework\View\Element\Template" name="store.menu" group="navigation-sections" template="Magento_Theme::html/container.phtml">-->
-                <!--<arguments>-->
-                    <!--<argument name="title" translate="true" xsi:type="string">Menu</argument>-->
-                <!--</arguments>-->
-                <!--<block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="Magento_Theme::html/topmenu.phtml" ttl="3600" before="-"/>-->
-            <!--</block>-->
 
             <referenceBlock name="skip_to_content" remove="true"/>
 
-            <!-- @TODO: Commentare per search -->
-            <!--<referenceContainer name="header.panel.wrapper" remove="true"/>-->
         </referenceContainer>
 
 
 
 
-        <move element="catalog.topnav" destination="top.search" after="-"/>
+        <move element="catalog.topnav" destination="top.search" before="-"/>
 
-        <!-- Move children element inside bm.customer (dropdown) -->
         <move element="bm.top.links" destination="bm.customer" after="-"/>
 
 
@@ -129,10 +95,6 @@
         <referenceContainer name="columns.top">
             <block class="Magento\Theme\Block\Html\Title" name="page.main.title"
                    template="Magento_Theme::html/title.phtml"/>
-            <!--<container name="page.messages" htmlTag="div" htmlClass="page messages">
-                <block class="Magento\Framework\View\Element\Template" name="ajax.message.placeholder" template="Magento_Theme::html/messages.phtml"/>
-                <block class="Magento\Framework\View\Element\Messages" name="messages" as="messages" template="Walan_Theme::messages.phtml"/>
-            </container>-->
         </referenceContainer>
 
 
@@ -186,7 +148,6 @@
             </container>
 
         </referenceContainer>
-
 
         <!-- Footer link -->
         <move element="stocktech.footer" destination="bm.container.footer.fourth.row" before="-"/>
