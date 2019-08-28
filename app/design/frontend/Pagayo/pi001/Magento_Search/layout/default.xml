@@ -3,9 +3,8 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="default_head_blocks"/>
     <body>
-        <referenceContainer name="header-wrapper">
-            <block class="Walan\Theme\Block\Header\Menu" name="top.search" as="topSearch"
-                   template="Magento_Search::form.mini.phtml"/>
+        <referenceContainer name="bm.header.top">
+
         </referenceContainer>
     </body>
 </page>

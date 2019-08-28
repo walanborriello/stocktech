@@ -20,7 +20,7 @@ $helper = $this->helper('Magento\Search\Helper\Data');
                            $helper->getSuggestUrl() ?>",
                         "destinationSelector":"#search_autocomplete"}
                    }'
-                           type="search"
+                           type="search" hidden
                            name="<?= /* @escapeNotVerified */
                            $helper->getQueryParamName() ?>"
                            value="<?= /* @escapeNotVerified */
@@ -39,9 +39,6 @@ $helper = $this->helper('Magento\Search\Helper\Data');
             </div>
         </form>
     </div>
-</div>
-<div class="custom_breadcrumb">
-    <?php echo $this->getLayout()->getBlock('breadcrumbs')->toHtml(); ?>
 </div>
 <script type="text/x-magento-init">
    {

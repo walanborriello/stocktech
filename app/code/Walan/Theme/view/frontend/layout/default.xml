@@ -7,7 +7,9 @@
 
 
     <body>
-
+        <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.review.form" remove="true" />
+        <referenceBlock name="product.info.review" remove="true" />
 
         <referenceContainer name="header-wrapper" remove="true"/>
 
@@ -26,6 +28,9 @@
                         </arguments>
                     </block>
 
+                    <block class="Walan\Theme\Block\Header\Menu" name="top.search" as="topSearch"
+                           template="Magento_Search::form.mini.phtml"/>
+
 
                     <!-- TOP RIGHT AREA -->
                     <container name="bm.header.top.right" htmlTag="div" htmlClass="top__right" after="bm.logo">
@@ -38,6 +43,9 @@
                                 <argument name="css_class" xsi:type="string">header links</argument>
                             </arguments>
                         </block>
+
+                        <block class="Walan\Theme\Block\Html\ItemHeader" name="bm.search"
+                               template="Walan_Theme::html/header/search.phtml" cacheable="false"/>
 
 
                         <!-- Personal Area -->
@@ -62,6 +70,7 @@
                             </container>
                         </container>
 
+
                         <!-- Wishlist -->
                         <block class="Walan\Theme\Block\Html\ItemHeader" name="bm.wishlist"
                                template="Walan_Theme::html/header/wishlist.phtml" cacheable="false"/>
@@ -83,8 +92,7 @@
 
 
 
-        <move element="catalog.topnav" destination="top.search" before="-"/>
-
+        <!-- Move children element inside bm.customer (dropdown) -->
         <move element="bm.top.links" destination="bm.customer" after="-"/>
 
 
@@ -95,6 +103,10 @@
         <referenceContainer name="columns.top">
             <block class="Magento\Theme\Block\Html\Title" name="page.main.title"
                    template="Magento_Theme::html/title.phtml"/>
+            <!--<container name="page.messages" htmlTag="div" htmlClass="page messages">
+                <block class="Magento\Framework\View\Element\Template" name="ajax.message.placeholder" template="Magento_Theme::html/messages.phtml"/>
+                <block class="Magento\Framework\View\Element\Messages" name="messages" as="messages" template="Walan_Theme::messages.phtml"/>
+            </container>-->
         </referenceContainer>
 
 
@@ -127,19 +139,6 @@
         <referenceContainer name="footer">
             <!--<referenceBlock name="stocktech.footer" remove="true"/>-->
 
-            <!-- Container First Row -->
-            <container name="bm.container-fluid.footer.first.row" htmlTag="div" htmlClass="first-row" after="footer"
-                       before="-">
-                <container name="bm.container.footer.first.row" htmlTag="div" htmlClass="container">
-                    <container name="bm.row.footer.first.row" htmlTag="div" htmlClass="row">
-                        <container name="bm.container.newsletter.footer" htmlTag="div" htmlClass="bs-col-md-9"/>
-                        <container name="bm.container.help.footer" htmlTag="div" htmlClass="bs-col-md-3">
-                            <block class="Magento\Framework\View\Element\Template" name="bm.help.footer" before="-"
-                                   template="Walan_Theme::html/footer/cta-help.phtml"/>
-                        </container>
-                    </container>
-                </container>
-            </container>
 
             <!-- Container Fifth Row -->
             <container name="bm.copyright.container">
@@ -148,6 +147,7 @@
             </container>
 
         </referenceContainer>
+
 
         <!-- Footer link -->
         <move element="stocktech.footer" destination="bm.container.footer.fourth.row" before="-"/>
@@ -163,6 +163,8 @@
         <referenceBlock name="wishlist_sidebar" remove="true"/>
         <referenceBlock name="wish-list-link" remove="true"/>
         <referenceContainer name="sidebar.additional" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+
 
     </body>
 </page>

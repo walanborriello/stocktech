@@ -2,6 +2,7 @@
 
 namespace Walan\Theme\Helper;
 
+use Magento\Sales\ViewModel\Customer\AddressFormatter;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -43,7 +44,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @var ImageModel
      */
     protected $_imageModel;
-    private $currentStore;
     protected $request;
 
 
@@ -53,7 +53,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\UrlInterface $urlBuilder,
         AddressFormatter $addressFormatter,
-        CurrentStore $currentStore,
         \Magento\Framework\App\Request\Http $request
     )
     {
@@ -62,7 +61,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_storeManager = $storeManager;
         $this->_urlBuilder = $urlBuilder;
         $this->addressFormatter = $addressFormatter;
-        $this->currentStore = $currentStore;
         $this->request = $request;
 
     }

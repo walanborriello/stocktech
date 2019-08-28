@@ -11,7 +11,7 @@
 
 <div data-block="minicart" class="minicart-wrapper">
     <a class="action showcart" href="checkout/cart"
-       data-bind="scope: 'minicart_content'">My Cart
+       data-bind="scope: 'minicart_content'"><?= __("My Cart"); ?>
         <span class="counter qty empty"
               data-bind="css: { empty: !!getCartParam('summary_count') == false }, blockLoader: isLoading">
             <span class="counter-number">( <!-- ko if: getCartParam('summary_count') -->
