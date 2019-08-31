@@ -7,9 +7,9 @@
 
 
     <body>
-        <referenceBlock name="reviews.tab" remove="true" />
-        <referenceBlock name="product.review.form" remove="true" />
-        <referenceBlock name="product.info.review" remove="true" />
+        <referenceBlock name="reviews.tab" remove="true"/>
+        <referenceBlock name="product.review.form" remove="true"/>
+        <referenceBlock name="product.info.review" remove="true"/>
 
         <referenceContainer name="header-wrapper" remove="true"/>
 
@@ -82,14 +82,11 @@
                 </container>
 
 
-
             </container>
 
             <referenceBlock name="skip_to_content" remove="true"/>
 
         </referenceContainer>
-
-
 
 
         <!-- Move children element inside bm.customer (dropdown) -->
@@ -117,28 +114,31 @@
         </referenceBlock>
 
 
-        <referenceContainer name="footer-container">
+        <!--<referenceContainer name="footer-container">-->
 
-            <referenceBlock name="footer_links">
-                <referenceBlock name="privacy-policy-link" remove="true"/>
-                <referenceBlock name="search-term-popular-link" remove="true"/>
-                <referenceBlock name="contact-us-link" remove="true"/>
-                <referenceBlock name="catalog-search-advanced-link" remove="true"/>
-                <referenceBlock name="sales-guest-form-link" remove="true"/>
+        <!--<referenceBlock name="footer_links">-->
+        <!--<referenceBlock name="privacy-policy-link" remove="true"/>-->
+        <!--<referenceBlock name="search-term-popular-link" remove="true"/>-->
+        <!--<referenceBlock name="contact-us-link" remove="true"/>-->
+        <!--<referenceBlock name="catalog-search-advanced-link" remove="true"/>-->
+        <!--<referenceBlock name="sales-guest-form-link" remove="true"/>-->
 
-                <block class="Magento\Framework\View\Element\Html\Link\Current" name="test">
-                    <arguments>
-                        <argument name="label" xsi:type="string" translate="true">test</argument>
-                        <argument name="path" xsi:type="string">test</argument>
-                    </arguments>
-                </block>
-            </referenceBlock>
+        <!--<block class="Magento\Framework\View\Element\Html\Link\Current" name="test">-->
+        <!--<arguments>-->
+        <!--<argument name="label" xsi:type="string" translate="true">test</argument>-->
+        <!--<argument name="path" xsi:type="string">test</argument>-->
+        <!--</arguments>-->
+        <!--</block>-->
+        <!--</referenceBlock>-->
 
-        </referenceContainer>
+        <!--</referenceContainer>-->
 
         <referenceContainer name="footer">
             <!--<referenceBlock name="stocktech.footer" remove="true"/>-->
-
+            <container name="bm.footer.container">
+                <block class="Magento\Framework\View\Element\Template" name="bm.footer" before="-"
+                       template="Walan_Theme::html/footer/footer.phtml"/>
+            </container>
 
             <!-- Container Fifth Row -->
             <container name="bm.copyright.container">
@@ -146,11 +146,11 @@
                        template="Walan_Theme::html/footer/copyright.phtml"/>
             </container>
 
+
         </referenceContainer>
 
-
         <!-- Footer link -->
-        <move element="stocktech.footer" destination="bm.container.footer.fourth.row" before="-"/>
+        <!--<move element="stocktech.footer" destination="bm.container.footer.fourth.row" before="-"/>-->
 
         <!-- Messages container -->
         <move element="page.messages" destination="columns" after="bm.container-fluid.title.wrapper"/>
@@ -164,6 +164,7 @@
         <referenceBlock name="wish-list-link" remove="true"/>
         <referenceContainer name="sidebar.additional" remove="true"/>
         <referenceBlock name="copyright" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
 
 
     </body>

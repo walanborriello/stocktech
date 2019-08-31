@@ -17,6 +17,9 @@
         <referenceBlock name="head.components">
             <block class="Magento\Framework\View\Element\Js\Components" name="checkout_page_head_components" template="Magento_Catalog::js/components.phtml"/>
         </referenceBlock>
+        <referenceContainer name="product.info.main">
+
+        </referenceContainer>
         <referenceBlock name="page.main.title">
             <arguments>
                 <argument name="css_class" xsi:type="string">product</argument>
@@ -28,6 +31,7 @@
                 <argument name="add_attribute" xsi:type="string">itemscope itemtype="http://schema.org/Product"</argument>
             </arguments>
         </referenceBlock>
+
         <referenceContainer name="div.sidebar.additional">
             <block class="Magento\Catalog\Block\Product\ProductList\Related" name="catalog.product.related" template="Magento_Catalog::product/list/items.phtml" before="-">
                 <arguments>
@@ -57,11 +61,8 @@
         <referenceBlock name="product.info.addtocart.additional">
             <block class="Magento\Catalog\Block\ShortcutButtons\InCatalog" name="addtocart.shortcut.buttons.additional"/>
         </referenceBlock>
-        <referenceContainer name="content">
-            <block
-                    class="Magento\Catalog\Block\Ui\ProductViewCounter"
-                    name="product_viewed_counter"
-                    template="Magento_Catalog::product/view/counter.phtml"/>
-        </referenceContainer>
+
     </body>
+    <move element="product.info.description" destination="page.main.title" before="-" />
+
 </page>

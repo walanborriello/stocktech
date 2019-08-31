@@ -40,15 +40,15 @@
         </referenceContainer>
 
         <referenceContainer name="page.bottom">
-            <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-"
-                   template="Magento_Newsletter::subscribe.phtml"/>
+            <!--<block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-"-->
+                   <!--template="Magento_Newsletter::subscribe.phtml"/>-->
         </referenceContainer>
-        <referenceContainer name="footer-container">
-            <block class="Magento\Cms\Block\Block" name="block_footer_links">
-                <arguments>
-                    <argument name="block_id" xsi:type="string">footer_container</argument>
-                </arguments>
-            </block>
-        </referenceContainer>
+        <!--<referenceContainer name="footer-container">-->
+            <!--<block class="Magento\Cms\Block\Block" name="block_footer_links">-->
+                <!--<arguments>-->
+                    <!--<argument name="block_id" xsi:type="string">footer_container</argument>-->
+                <!--</arguments>-->
+            <!--</block>-->
+        <!--</referenceContainer>-->
     </body>
 </page>

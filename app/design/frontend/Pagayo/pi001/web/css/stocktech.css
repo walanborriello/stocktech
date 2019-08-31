@@ -52,7 +52,6 @@ template {
     display: none
 }
 
-
 abbr[title] {
     border-bottom: none;
     -webkit-text-decoration: underline dotted;
@@ -10583,7 +10582,7 @@ header .header.content .search__input {
     width: 400px;
     padding: 0 20px;
     font-size: 18px;
-    border-radius: 2px 2px 2px 2px;
+    border-radius: 4px;
     border: 0
 }
 
@@ -11093,9 +11092,6 @@ header .header.content .mp-pusher {
     }
 }
 
-.page-title-wrapper {
-    margin-top: 24px
-}
 
 .page-title-wrapper h1.page-title {
     font-size: 36px;
@@ -11124,9 +11120,8 @@ footer.page-footer .bm_clearFix {
 }
 
 footer.page-footer .footer.content {
-    margin: 0;
-    max-width: 100%;
-    background: #f2f4f5;
+    max-width: 1500px;
+    background: #202A38;
     padding: 0
 }
 
@@ -11134,12 +11129,10 @@ footer.page-footer .footer.content .first-row {
     padding: 63px 0
 }
 
-footer.page-footer .footer.content .newsletter {
-    background-color: #f2f4f5;
-    width: 100%;
-    float: none;
-    margin-bottom: 0
-}
+/*footer.page-footer .footer.content .newsletter {*/
+/*padding-right: 15px;*/
+/*width: 500px;*/
+/*}*/
 
 footer.page-footer .footer.content .newsletter__title {
     display: block;
@@ -11147,12 +11140,12 @@ footer.page-footer .footer.content .newsletter__title {
     line-height: 30px
 }
 
-footer.page-footer .footer.content .newsletter__subtitle {
-    display: block;
-    color: #6d6d6d;
-    line-height: 18px;
-    padding-bottom: 30px
-}
+/*footer.page-footer .footer.content .newsletter__subtitle {*/
+/*display: block;*/
+/*color: #6d6d6d;*/
+/*line-height: 18px;*/
+/*padding-bottom: 30px*/
+/*}*/
 
 footer.page-footer .footer.content .newsletter .content .form.subscribe {
     display: -webkit-flex;
@@ -11175,7 +11168,6 @@ footer.page-footer .footer.content .newsletter .content .form.subscribe .field .
 }
 
 footer.page-footer .footer.content .newsletter .content .form.subscribe .field .control input {
-    height: 50px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .05);
     -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .05);
     -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .05);
@@ -11205,12 +11197,12 @@ footer.page-footer .footer.content .newsletter .content .form.subscribe .field .
     color: #9b9b9b
 }
 
-footer.page-footer .footer.content .newsletter .content .form.subscribe .actions button {
-    height: 50px;
-    text-transform: uppercase;
-    width: 265px;
-    display: block
-}
+/*footer.page-footer .footer.content .newsletter .content .form.subscribe .actions button {*/
+/*height: 50px;*/
+/*text-transform: uppercase;*/
+/*width: 265px;*/
+/*display: block*/
+/*}*/
 
 footer.page-footer .footer.content .help {
     width: 265px
@@ -11386,7 +11378,7 @@ footer.page-footer .footer-links .bm_only-mobile {
 
 .copyright,
 footer.page-footer .fifth-row {
-    background-color: #f8f8f8
+    background-color: #202A38;
 }
 
 @media (max-width: 991px) {
@@ -11395,12 +11387,11 @@ footer.page-footer .fifth-row {
         padding-right: 0
     }
 
-    footer.page-footer .footer.content .newsletter {
-        text-align: center;
-        padding-left: 64px;
-        padding-right: 64px
-    }
-
+    /*footer.page-footer .footer.content .newsletter {*/
+    /*text-align: center;*/
+    /*padding-left: 64px;*/
+    /*padding-right: 64px*/
+    /*}*/
     footer.page-footer .footer.content .newsletter .content .form.subscribe .field {
         width: 416px;
         padding: 0
@@ -11473,14 +11464,6 @@ footer.page-footer .fifth-row {
     }
 }
 
-.copyright {
-    padding: 40px 140px;
-    text-align: center;
-    line-height: 25px;
-    color: #9b9b9b;
-    font-size: 12px
-}
-
 .copyright .bm_img-logo-footer {
     display: inline-block;
     margin-top: 45px
@@ -11488,12 +11471,21 @@ footer.page-footer .fifth-row {
 
 @media (max-width: 1199px) {
     .copyright {
+        display: none;
         padding: 50px 10px 75px
     }
 
     .copyright .bm_img-logo-footer {
         height: 50px;
         margin-top: 45px
+    }
+
+    .footer2-container {
+        text-align: center;
+    }
+
+    .newslettercustom {
+        text-align: center;
     }
 }
 
@@ -11708,8 +11700,7 @@ a:visited {
 .action-primary:focus,
 .action-primary:visited,
 .action.primary:active,
-.action.primary:focus,
-.action.primary:visited {
+.action.primary:focus {
     border: 0 !important;
     background-color: #EDCC77 !important
 }
@@ -12201,6 +12192,7 @@ input[type=text],
 input[type=url] {
     font-family: "Red Hat Display Regular";
     font-size: 15px;
+    border-radius: 4px;
 }
 
 input[type=datetime].input-text,
@@ -17181,7 +17173,9 @@ input[type=checkbox].modal-checkbox {
     margin-top: 15px;
     margin-bottom: 0;
     display: flex;
-    position:relative;
+    position: relative;
+    float: right;
+    width: 50%;
 }
 
 .catalog-product-view .product-info-main .product-info-price .price-box {
@@ -17241,7 +17235,9 @@ input[type=checkbox].modal-checkbox {
     color: #757575;
     font-size: 12px;
     line-height: 20px;
-    padding-left: 0
+    padding-left: 0;
+    float: right;
+    width: 50%;
 }
 
 .catalog-product-view .product-info-main .product-add-form {
@@ -17344,7 +17340,7 @@ input[type=checkbox].modal-checkbox {
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-bottom: 60px;
-    float:left;
+    float: left;
 }
 
 .catalog-product-view .product-info-main .bm_product-info-price .fieldset .field.qty .label,
@@ -17519,7 +17515,6 @@ input[type=checkbox].modal-checkbox {
     border-bottom: 1px solid rgba(151, 151, 151, .2)
 }
 
-
 .catalog-product-view .product-info-main .product-social-links .product-addto-links .split.button.wishlist {
     padding: 20px;
     width: 100%
@@ -17599,7 +17594,6 @@ input[type=checkbox].modal-checkbox {
     width: 33%;
     margin: 0;
     position: relative;
-    padding-bottom: 100px
 }
 
 .catalog-product-view .product.media .bm_text-information-carousel {
@@ -22779,6 +22773,11 @@ table.dataTable tr.nested td {
 .page-products .product-item-info {
     width: 100%;
     background-color: #ffffff;
+    height: 465px;
+}
+
+.product-item-name {
+    height: 40px;
 }
 
 .page-products .products-grid .product-item {
@@ -22799,4 +22798,30 @@ table.dataTable tr.nested td {
 .sidebar .sidebar-main {
     margin-top: 30px;
     position: relative;
+}
+
+.footer.content ul {
+    padding-right: 0px;
+}
+
+.login-container .fieldset > .field > .control {
+    margin: auto;
+    display: block;
+}
+
+.login-container {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.login-container .block-new-customer .actions-toolbar,
+.login .actions-toolbar {
+    display: flex;
+    justify-content: center;
+}
+
+.product .attribute .description{
+    float: left;
+    width: 48%;
+    margin-top: 43px;
 }
