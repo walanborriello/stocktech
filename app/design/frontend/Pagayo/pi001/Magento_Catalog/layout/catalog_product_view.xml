@@ -64,5 +64,7 @@
 
     </body>
     <move element="product.info.description" destination="page.main.title" before="-" />
+    <move element="product.info.extrahint" destination="product.info.form.content" after="product.info.addtocart" />
+    <referenceBlock name="product.info.overview" remove="true"/>
 
 </page>

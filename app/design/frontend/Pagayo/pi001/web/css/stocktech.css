@@ -17163,7 +17163,7 @@ input[type=checkbox].modal-checkbox {
 }
 
 .catalog-product-view .product-info-main {
-    width: 33%
+    width: 65%
 }
 
 .catalog-product-view .product-info-main .product-info-price {
@@ -17244,6 +17244,9 @@ input[type=checkbox].modal-checkbox {
     padding: 0 15px 1px;
     background-color: #f9f9f9;
     margin-bottom: 30px;
+    width: 50%;
+    display: inline-flex;
+    float: right;
 }
 
 .catalog-product-view .product-info-main .bm_product-info {
@@ -17512,7 +17515,8 @@ input[type=checkbox].modal-checkbox {
 
 .catalog-product-view .product-info-main .product-social-links .product-addto-links {
     display: block;
-    border-bottom: 1px solid rgba(151, 151, 151, .2)
+    border-bottom: 1px solid rgba(151, 151, 151, .2);
+    text-align: center;
 }
 
 .catalog-product-view .product-info-main .product-social-links .product-addto-links .split.button.wishlist {
@@ -22820,8 +22824,14 @@ table.dataTable tr.nested td {
     justify-content: center;
 }
 
-.product .attribute .description{
+.product.attribute.description {
+    display: inline-table;
+    width: 45%;
+    order: 1;
+    text-align: justify;
     float: left;
-    width: 48%;
-    margin-top: 43px;
+}
+
+#product_addtocart_form{
+    width: 100%;
 }
