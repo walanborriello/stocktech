@@ -121,8 +121,11 @@ class ImageFactory extends \Magento\Catalog\Block\Product\ImageFactory{
     }
 
     protected function getImageUrlImported($product){
-        if($this->_checkExistUrl($product->getImageImport())){
-            $url = $product->getImageImport();
+        if(!$urlimg = $product->getImageImport()){
+            $urlimg = $product->getData('small_image');
+        }
+        if($this->_checkExistUrl($urlimg)){
+            $url = $urlimg;
         }else {
             $url = $this->getPlaceHolderImage();
         }
@@ -139,14 +142,16 @@ class ImageFactory extends \Magento\Catalog\Block\Product\ImageFactory{
 
     private function _checkExistUrl($url){
         $return = false;
-        $handle = curl_init($url);
-        curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
-        $response = curl_exec($handle);
-        $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-        if($httpCode == 200){
-            $return = true;
+        if($url){
+            $handle = curl_init($url);
+            curl_setopt($handle, CURLOPT_RETURNTRANSFER, TRUE);
+            $response = curl_exec($handle);
+            $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+            if($httpCode == 200){
+                $return = true;
+            }
+            curl_close($handle);
         }
-        curl_close($handle);
         return $return;
     }
 
