@@ -6,7 +6,7 @@
         <!-- Header
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
         <!-- Note: "header-wrapper" is a default container for default blocks: logo, top links, search, minicart.
-             All these blocks were moved to the new base header container. 
+             All these blocks were moved to the new base header container.
              But we may still need to display "header-wrapper" in case custom code adds there some blocks. -->
         <!--<move element="top.search" destination="page.top" after="catalog.topnav" />-->
         <move element="top.links" destination="page.top" after="catalog.topnav" />
