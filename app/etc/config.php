@@ -211,6 +211,8 @@ return [
         'Vertex_Tax' => 1,
         'Vmasciotta_ProvinceItaliane' => 1,
         'Walan_Catalog' => 1,
+        'Walan_Checkout' => 1,
+        'Walan_FatturazioneElettronica' => 1,
         'Walan_Theme' => 1
     ]
 ];
