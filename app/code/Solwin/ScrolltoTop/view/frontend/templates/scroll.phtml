@@ -39,7 +39,7 @@ if ($enable) {
             }
             ?>
             <?php if ($display == 1 || $display == 3) { ?>
-            <span style="<?php if($display == 3) { ?> padding: 0 0 5px;display: block; <?php } else { ?> float: left;padding: 10px 0;text-align: center;width: 100%; <?php } ?>"><?php echo $text; ?></span>
+            <span style="<?php if($display == 3) { ?> display: block; <?php } else { ?> float: left;text-align: center;width: 100%; <?php } ?>"> <img src="<?php echo $this->getViewFileUrl('Magento_Theme::up-arrow.png'); ?>"></span>
             <?php } ?>
         </a>
     </div>
