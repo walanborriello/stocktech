@@ -1,0 +1,46 @@
+<!--The 'step_code' value from the .js file should be used-->
+<li id="electronic_invoice" data-bind="fadeVisible: isVisible">
+    <div class="step-title" data-bind="i18n: 'Electronic invoice'" data-role="title"></div>
+    <div id="checkout-step-title"
+         class="step-content"
+         data-role="content">
+
+        <form data-bind="submit: navigateToNextStep" novalidate="novalidate">
+            <div>
+                <div>
+                    <input type="checkbox" id="request-electronic-invoice" name="requestElectronicInvoice"
+                           data-bind="checked: requestEInvoing">
+                    <label for="private" class="label"> <span
+                            data-bind="i18n: 'Request electronic invoice'"></span></label>
+                </div>
+                <div>
+                    <input type="radio" id="private" name="typeCustomer" value="0" data-bind="checked: typeCustomer"
+                           checked>
+                    <label for="private" class="label"> <span data-bind="i18n: 'Private'"></span></label>
+
+                    <input type="radio" id="company" name="typeCustomer" value="dewey" data-bind="checked: typeCustomer">
+                    <label for="company" class="label"> <span data-bind="i18n: 'Company'"></span></label>
+                </div>
+
+                <div>
+                    <label class="label"> <span data-bind="i18n: 'SSID'"></span></label>
+                    <input class="input-text" data-bind="value: ssid" id="ssid" type="text">
+                </div>
+
+                <div>
+                    <label class="label"> <span data-bind="i18n: 'PEC'"></span></label>
+                    <input class="input-text" data-bind="value: pec" id="pec" type="text">
+                </div>
+            </div>
+
+
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button data-role="opc-continue" type="submit" class="button action continue primary">
+                        <span><!-- ko i18n: 'Next'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</li>
