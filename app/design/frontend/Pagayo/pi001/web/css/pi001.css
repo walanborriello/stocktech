@@ -12,6 +12,7 @@ body {
 
 #maincontent .columns {
     width: 100%;
+    text-align: center;
 }
 
 .page-wrapper {
@@ -496,7 +497,6 @@ li.product-item:last-child {
 
 .product-item .product-item-details {
     padding: 10px;
-    background: url(../images/griditem-bottom.gif) repeat-x left top;
 }
 
 .cms-home .price-box.price-final_price {
@@ -774,9 +774,6 @@ footer.page-footer {
     margin-right: 20px;
 }
 
-.product-image-container {
-    margin: 15px;
-}
 
 /*--------Footer End-------*/
 
@@ -1612,9 +1609,6 @@ ul {
     margin-bottom: 10px;
 }
 
-.label {
-    color: #000;
-}
 
 /*--------middle part--------*/
 
