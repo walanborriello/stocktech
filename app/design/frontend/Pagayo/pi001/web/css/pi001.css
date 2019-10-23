@@ -247,12 +247,21 @@ nav ul li .submenu {
     /*left: 0px !important;*/
 }
 
-.nav-sections .navigation .level0.level-top {
-    height: 43px;
+@media (max-width: 750px){
+    .ui-state-active{
+        background-color: #EDCC77;
+    }
+    .navigation .parent ul.submenu{
+        top: 7px !important;
+        border-top: 1px solid #d1d1d1 !important;
+    }
 }
 
 ul.submenu {
     border: 0 none !important;
+}
+.level-top{
+    background-color: #202A38;
 }
 
 .navigation .level0.active > .level-top, .navigation .level0.has-active > .level-top {
