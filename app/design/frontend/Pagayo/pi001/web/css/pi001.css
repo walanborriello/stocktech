@@ -1398,6 +1398,9 @@ width:100%;
     #maincontent {
         width: auto;
     }
+    .catalog-product-view #maincontent{
+        width: 100%;
+    }
 
     .homepage {
         padding-top: 0;

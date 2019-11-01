@@ -17175,7 +17175,8 @@ input[type=checkbox].modal-checkbox {
     display: flex;
     position: relative;
     float: right;
-    width: 50%;
+    width: 100%;
+    clear: both;
 }
 
 .catalog-product-view .product-info-main .product-info-price .price-box {
@@ -17244,7 +17245,7 @@ input[type=checkbox].modal-checkbox {
     padding: 0 15px 1px;
     background-color: #f9f9f9;
     margin-bottom: 30px;
-    width: 50%;
+    width: 100%;
     display: inline-flex;
     float: right;
 }
@@ -18052,7 +18053,6 @@ input[type=checkbox].modal-checkbox {
 
     .catalog-product-view .product.info.detailed .product.data.items {
         margin: 0;
-        border-bottom: solid 1px #48494a
     }
 
     .catalog-product-view .product.info.detailed .bm_bottom-table {
@@ -21265,9 +21265,7 @@ table.dataTable tr th.sorting_asc {
 
 .product.info.detailed .product.data.items .item.content {
     border: 0;
-    border-top: solid 2px #48494a;
     padding: 0;
-    margin-top: 60px
 }
 
 .product.info.detailed .product.data.items .item.content .bm_container-stars {
@@ -22816,7 +22814,7 @@ table.dataTable tr.nested td {
 
 .product.attribute.description {
     display: inline-table;
-    width: 45%;
+    width: 100%;
     order: 1;
     text-align: justify;
     float: left;
@@ -22917,4 +22915,53 @@ table.dataTable tr.nested td {
 }
 .logo-search-visibility{
     display: none !important;
+}
+/*Page Listing*/
+.page-products .product-items{
+    text-align: left;
+}
+.page-products .product-items .product.photo.product-item-photo{
+    margin: 0 auto;
+}
+/*Page product*/
+.catalog-product-view .column.main{
+        display: flex;
+        flex-wrap: wrap;
+    justify-content: space-between;
+}
+.catalog-product-view .column.main .product-info-main{
+    order: 3;
+    width: 32%;
+}
+.catalog-product-view .column.main .product.info.detailed{
+    width: 32%;
+}
+.catalog-product-view .column.main .product-info-main{
+    width: 32%;
+}
+.catalog-product-view #description{
+    margin-top: 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+.catalog-product-view #description p{
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+@media (max-width: 768px){
+    .page-products .products-grid .product-item{
+        margin-left: 0;
+    }
+    .catalog-product-view .column.main .product-info-main{
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .catalog-product-view .product.data.items{
+        border-bottom: none;
+    }
+    .catalog-product-view .column.main .product.info.detailed{
+        width: 100%;
+        margin: 0 auto;
+    }
 }
