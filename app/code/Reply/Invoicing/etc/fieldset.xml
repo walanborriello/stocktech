@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:DataObject/etc/fieldset.xsd">
+    <scope id="global">
+        <fieldset id="customer_address">
+            <field name="wantinvoice">
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="customer_invoice_type">
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="fiscal_code_id">
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="pec">
+                <aspect name="to_quote_address" />
+            </field>
+            <field name="sdi">
+                <aspect name="to_quote_address" />
+            </field>
+        </fieldset>
+        <fieldset id="sales_convert_quote_address">
+            <field name="wantinvoice">
+                <aspect name="to_order_address" />
+            </field>
+            <field name="customer_invoice_type">
+                <aspect name="to_order_address" />
+            </field>
+            <field name="fiscal_code_id">
+                <aspect name="to_order_address" />
+            </field>
+            <field name="pec">
+                <aspect name="to_order_address" />
+            </field>
+            <field name="sdi">
+                <aspect name="to_order_address" />
+            </field>
+        </fieldset>
+        <fieldset id="order_address">
+            <field name="wantinvoice">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="customer_invoice_type">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="fiscal_code_id">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="pec">
+                <aspect name="to_customer_address" />
+            </field>
+            <field name="sdi">
+                <aspect name="to_customer_address" />
+            </field>
+        </fieldset>
+    </scope>
+</config>
