@@ -26,6 +26,7 @@ class LayoutProcessor implements LayoutProcessorInterface
         $billingAddressPayment['customer_invoice_type'] = $this->getCustomerInvoiceTypeField('billingAddressshared');
         $billingAddressPayment['pec'] = $this->getPecField('billingAddressshared');
         $billingAddressPayment['sdi'] = $this->getSdiField('billingAddressshared');
+        $billingAddressPayment['fiscal_code_id'] = $this->getFiscalCodeField('billingAddressshared');
 
         $billingAddressPayment['vat_id']['sortOrder'] = 58;
         $billingAddressPayment['vat_id']['visible'] = false;
@@ -147,6 +148,31 @@ class LayoutProcessor implements LayoutProcessorInterface
             'customEntry' => null,
             'visible' => false,
             'value' => '' // value field is used to set a default value of the attribute
+        ];
+    }
+
+    protected function getFiscalCodeField($scope)
+    {
+        return [
+            'component' => 'Magento_Ui/js/form/element/abstract',
+            'config' => [
+                'customScope' => $scope,
+                'customEntry' => null,
+                'template' => 'ui/form/field',
+                'elementTmpl' => 'ui/form/element/input'
+            ],
+            'dataScope' => $scope . '.custom_attributes.fiscal_code_id',
+            'label' => __('Fiscal Code'),
+            'provider' => 'checkoutProvider',
+            'sortOrder' => 64,
+            'validation' => [
+                'required-entry' => false
+            ],
+            'options' => [],
+            'filterBy' => null,
+            'customEntry' => null,
+            'visible' => false,
+            'value' => ''
         ];
     }
 }

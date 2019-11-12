@@ -178,6 +178,38 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
                 'system' => false,
                 'position' => 100
             ]);
+            $customAttribute = $this->eavConfig->getAttribute('customer_address', 'wantinvoice');
+
+            $customAttribute->setData(
+                'used_in_forms',
+                ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']
+            );
+            $customAttribute->save();
+
+        }
+
+
+        if(version_compare($context->getVersion(), '1.0.5', '<=')){
+            $setup->startSetup();
+
+            $eavSetup = $this->_eavSetupFactory->create(['setup' => $setup]);
+
+            $eavSetup->addAttribute('customer_address', 'fiscal_code_id', [
+                'type' => 'varchar',
+                'input' => 'text',
+                'label' => 'Fiscal Code',
+                'visible' => true,
+                'required' => false,
+                'user_defined' => true,
+                'system' => false,
+                'group' => 'General',
+                'global' => true,
+                'visible_on_front' => true,
+                'sort_order' => 104,
+                'position' => 104
+            ]);
+            $customAttribute = $this->eavConfig->getAttribute('customer_address', 'customer_register_address');
+
             $customAttribute->setData(
                 'used_in_forms',
                 ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']

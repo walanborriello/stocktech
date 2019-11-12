@@ -38,7 +38,7 @@ define([
                 $('div[name="' + this.fiscalCodeId().dataScope + '"]').removeClass('second-column-md-6-field').addClass('full-width-field');
                 this.company().visible(false);
                 this.company().required(false);
-                this.pec().visible(false);
+                this.pec().visible(true);
                 this.sdi().visible(false);
             } else if (value === '2') {
                 this.vatId().visible(true);
@@ -48,6 +48,7 @@ define([
                 this.company().visible(true);
                 this.company().required(true);
                 this.pec().visible(true);
+                this.pec().required(true);
                 this.sdi().visible(true);
             }
         }
