@@ -217,5 +217,6 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
             $customAttribute->save();
 
         }
+
     }
 }

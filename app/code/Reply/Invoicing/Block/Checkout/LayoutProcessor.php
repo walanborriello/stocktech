@@ -28,6 +28,7 @@ class LayoutProcessor implements LayoutProcessorInterface
         $billingAddressPayment['sdi'] = $this->getSdiField('billingAddressshared');
         $billingAddressPayment['fiscal_code_id'] = $this->getFiscalCodeField('billingAddressshared');
 
+        $billingAddressPayment['region_id']['sortOrder'] = 99;
         $billingAddressPayment['vat_id']['sortOrder'] = 58;
         $billingAddressPayment['vat_id']['visible'] = false;
         $billingAddressPayment['company']['sortOrder'] = 60;
@@ -59,7 +60,9 @@ class LayoutProcessor implements LayoutProcessorInterface
             'validation'    => [ 'required-entry' => false ],
             'customEntry' => null,
             'visible'   => true,
-            'additionalClasses' => 'field-wantinvoice'
+            'additionalClasses' => 'field-wantinvoice',
+            'options' => [],
+            'filterBy' => null
         ];
     }
 
@@ -162,7 +165,7 @@ class LayoutProcessor implements LayoutProcessorInterface
                 'elementTmpl' => 'ui/form/element/input'
             ],
             'dataScope' => $scope . '.custom_attributes.fiscal_code_id',
-            'label' => __('Fiscal Code'),
+            'label' => __('Fiscal Code FISCALE'),
             'provider' => 'checkoutProvider',
             'sortOrder' => 64,
             'validation' => [
@@ -174,5 +177,7 @@ class LayoutProcessor implements LayoutProcessorInterface
             'visible' => false,
             'value' => ''
         ];
+
+
     }
 }

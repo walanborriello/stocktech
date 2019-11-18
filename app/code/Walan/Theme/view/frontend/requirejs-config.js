@@ -4,8 +4,8 @@ var config = {
     ],
     map: {
         '*': {
-            'theme': 'Walan_Theme/js/stocktech',
-            'popover': 'Walan_Theme/js/popover'
+            // 'theme': 'Walan_Theme/js/stocktech',
+            // 'popover': 'Walan_Theme/js/popover'
         }
     }
 };

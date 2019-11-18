@@ -23,7 +23,6 @@ define([
          */
         click: function(data, event) {
             this.change(event.target.value);
-
             return true;
         },
 
@@ -39,15 +38,21 @@ define([
                 this.company().visible(false);
                 this.company().required(false);
                 this.pec().visible(true);
-                this.sdi().visible(false);
+                this.sdi().visible(true);
+                this.sdi().value('0000000');
+                this.pec().value('');
+                this.company().value('');
             } else if (value === '2') {
                 this.vatId().visible(true);
                 this.fiscalCodeId().visible(true);
                 this.fiscalCodeId().required(false);
+                this.fiscalCodeId().value('');
                 $('div[name="' + this.fiscalCodeId().dataScope + '"]').removeClass('full-width-field').addClass('second-column-md-6-field');
                 this.company().visible(true);
                 this.company().required(true);
+                this.sdi().value('');
                 this.pec().visible(true);
+                this.pec().value('');
                 this.pec().required(true);
                 this.sdi().visible(true);
             }

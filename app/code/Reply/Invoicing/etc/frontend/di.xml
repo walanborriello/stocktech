@@ -7,4 +7,10 @@
 			</argument>
 		</arguments>
 	</type>
+	<type name="Magento\Quote\Model\BillingAddressManagement">
+		<plugin disabled="false" name="Experius_CodeBlogAddressAttributeToCheckout_Plugin_Magento_Quote_Model_BillingAddressManagement" sortOrder="10" type="Reply\Invoicing\Plugin\BillingAddressManagement"/>
+	</type>
+	<!--<type name="Magento\Quote\Model\ShippingAddressManagement">-->
+		<!--<plugin disabled="false" name="Experius_CodeBlogAddressAttributeToCheckout_Plugin_Magento_Quote_Model_ShippingAddressManagement" sortOrder="10" type="Reply\Invoicing\Plugin\Magento\Quote\Model\ShippingAddressManagement"/>-->
+	<!--</type>-->
 </config>

@@ -1,6 +1,3 @@
-/**
- *
- */
 define([
     'jquery',
     'mage/utils/wrapper',
@@ -9,20 +6,32 @@ define([
     'use strict';
 
     return function (setShippingInformationAction) {
+        return wrapper.wrap(setShippingInformationAction, function (originalAction, messageContainer) {
+            console.log("c");
 
-        return wrapper.wrap(setShippingInformationAction, function (originalAction) {
-            var billingAddress = quote.billingAddress();
-            console.log(billingAddress);
-            if (billingAddress['extension_attributes'] === undefined) {
-                billingAddress['extension_attributes'] = {};
+            var shippingAddress = quote.shippingAddress();
+
+            if (shippingAddress['extension_attributes'] === undefined) {
+                shippingAddress['extension_attributes'] = {};
             }
 
-            billingAddress['extension_attributes']['wantinvoice'] = billingAddress.customAttributes['wantinvoice'];
-            billingAddress['extension_attributes']['fiscal_code_id'] = billingAddress.customAttributes['fiscal_code_id'];
-            billingAddress['extension_attributes']['pec'] = billingAddress.customAttributes['pec'];
-            billingAddress['extension_attributes']['sdi'] = billingAddress.customAttributes['sdi'];
-            // pass execution to original action ('Magento_Checkout/js/action/set-shipping-information')
-            return originalAction();
+            if (shippingAddress.customAttributes != undefined) {
+                $.each(shippingAddress.customAttributes, function (key, value) {
+                    if ($.isPlainObject(value)) {
+                        key = value['attribute_code'];
+                        value = value['value'];
+                    }
+                    if (key !== 'customer_invoice_type') {
+                        shippingAddress['customAttributes'][key] = value;
+                        shippingAddress['extension_attributes'][key] = value;
+                        if(key === 'wantinvoice'){
+                            shippingAddress['extension_attributes'][key] = parseInt(value);
+                        }
+                    }
+                });
+            }
+
+            return originalAction(messageContainer);
         });
     };
 });

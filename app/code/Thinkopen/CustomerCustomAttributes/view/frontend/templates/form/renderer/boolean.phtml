@@ -1,0 +1,28 @@
+<?php
+/**
+ * @package Thinkopen
+ * @author Paolo
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Create account form template
+ */
+/* @var $block \Thinkopen\CustomAttributeManagement\Block\Form\Renderer\Boolean */
+?>
+<?php
+$fieldCssClass = 'field field-' . $block->getHtmlId();
+$fieldCssClass .= $block->isRequired() ? ' required' : '';
+?>
+<div class="<?= /* @escapeNotVerified */ $fieldCssClass ?>">
+    <div class="control control-checkbox">
+        <input name="<?= $block->getHtmlId() ?>" type="checkbox" id="<?= $block->getHtmlId() ?>" <?php if ($block->getHtmlClass()):?> class="boolean checkbox <?= $block->getHtmlClass() ?>"<?php endif;?> value="1" <?php if (1 == $block->getValue()):?> checked="checked" <?php endif;?> <?php if($block->isRequired()) {echo 'aria-required="true" data-validate="{required:true}"';} ?>>
+        <label class="label boolean" for="<?= $block->getHtmlId() ?>"><span><?= /* @escapeNotVerified */ __($block->getLabel()) ?></span></label>
+        <?php if ($_message = $block->getAdditionalDescription()) : ?>
+            <div class="note"><?= /* @escapeNotVerified */ $_message ?></div>
+        <?php endif; ?>
+    </div>
+</div>

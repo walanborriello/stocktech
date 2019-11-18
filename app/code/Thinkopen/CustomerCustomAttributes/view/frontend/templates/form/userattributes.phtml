@@ -1,0 +1,31 @@
+<?php
+/**
+ * @package Thinkopen
+ * @author Paolo
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @see \Thinkopen\CustomerCustomAttributes\Block\Form
+ */
+/* @var $block \Thinkopen\CustomerCustomAttributes\Block\Form */
+?>
+<?php if ($block->hasUserDefinedAttributes()): ?>
+    <?php if ($block->isShowContainer()): ?>
+    <fieldset class="fieldset">
+    <?php endif;?>
+    <?php foreach ($block->getUserDefinedAttributes() as $attribute):?>
+        <?php $attributeContent = $block->getAttributeHtml($attribute);?>
+        <?php if ($attributeContent): ?>
+            <?= /* @escapeNotVerified */ $attributeContent ?>
+        <?php endif;?>
+    <?php endforeach;?>
+    <?php if ($block->isShowContainer()): ?>
+    </fieldset>
+    <?php endif;?>
+<?php endif; ?>
