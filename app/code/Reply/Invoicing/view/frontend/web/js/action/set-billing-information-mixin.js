@@ -7,9 +7,9 @@ define([
 
     return function (setBillingAddressAction) {
         return wrapper.wrap(setBillingAddressAction, function (originalAction, messageContainer) {
+            console.log("d");
 
             var billingAddress = quote.billingAddress();
-            console.log("d");
 
             console.log(billingAddress);
             if (billingAddress != undefined) {

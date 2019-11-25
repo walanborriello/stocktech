@@ -9,36 +9,10 @@
 ?>
 <?php if($block->customerLoggedIn()): ?>
     <li class="customer-welcome">
-        <span class="info__title customer-name"
-              role="link"
-              tabindex="0"
-              data-mage-init='{"dropdown":{}}'
-              data-toggle="dropdown"
-              data-trigger-keypress-button="true"
-              data-bind="scope: 'customer'">
+        <a href="<?= $block->getUrl('customer/account/'); ?>" title="<?= __('Personal area'); ?>">
             <div class="info__icon bm-icon-user"></div>
             <div class="info__title"><?= __('Personal Area') ?></div>
-        </span>
-        <script type="text/x-magento-init">
-        {
-            "*": {
-                "Magento_Ui/js/core/app": {
-                    "components": {
-                        "customer": {
-                            "component": "Magento_Customer/js/view/customer"
-                        }
-                    }
-                }
-            }
-        }
-
-
-        </script>
-        <?php if($block->getChildHtml()): ?>
-            <div class="customer-menu" data-target="dropdown">
-                <?= $block->getChildHtml() ?>
-            </div>
-        <?php endif; ?>
+        </a>
     </li>
 <?php else: ?>
     <li class="customer-welcome">

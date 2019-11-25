@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="checkout.root">
@@ -14,10 +15,22 @@
                                                     <item name="children" xsi:type="array">
                                                         <item name="shipping-address-fieldset" xsi:type="array">
                                                             <item name="children" xsi:type="array">
-                                                                <item name="wantinvoice_input" xsi:type="array">
+                                                                <item name="wantinvoice" xsi:type="array">
                                                                     <item name="visible" xsi:type="boolean">false</item>
                                                                 </item>
-                                                                <item name="wantinvoice" xsi:type="array">
+                                                                <item name="pec" xsi:type="array">
+                                                                    <item name="visible" xsi:type="boolean">false</item>
+                                                                </item>
+                                                                <item name="sdi" xsi:type="array">
+                                                                    <item name="visible" xsi:type="boolean">false</item>
+                                                                </item>
+                                                                <item name="customer_invoice_type" xsi:type="array">
+                                                                    <item name="visible" xsi:type="boolean">false</item>
+                                                                </item>
+                                                                <item name="fiscal_code_id" xsi:type="array">
+                                                                    <item name="visible" xsi:type="boolean">false</item>
+                                                                </item>
+                                                                <item name="vat_id" xsi:type="array">
                                                                     <item name="visible" xsi:type="boolean">false</item>
                                                                 </item>
                                                             </item>

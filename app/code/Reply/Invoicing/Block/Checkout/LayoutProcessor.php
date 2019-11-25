@@ -18,21 +18,21 @@ class LayoutProcessor implements LayoutProcessorInterface
      */
     public function process($jsLayout)
     {
-
         // billing address form in payment step
         $billingAddressPayment = &$jsLayout['components']['checkout']['children']['steps']['children']['billing-step']
         ['children']['payment']['children']['afterMethods']['children']['billing-address-form']['children']['form-fields']['children'];
+
         $billingAddressPayment['wantinvoice'] = $this->getWantInvoiceField('billingAddressshared');
         $billingAddressPayment['customer_invoice_type'] = $this->getCustomerInvoiceTypeField('billingAddressshared');
         $billingAddressPayment['pec'] = $this->getPecField('billingAddressshared');
         $billingAddressPayment['sdi'] = $this->getSdiField('billingAddressshared');
         $billingAddressPayment['fiscal_code_id'] = $this->getFiscalCodeField('billingAddressshared');
 
-        $billingAddressPayment['region_id']['sortOrder'] = 99;
         $billingAddressPayment['vat_id']['sortOrder'] = 58;
         $billingAddressPayment['vat_id']['visible'] = false;
         $billingAddressPayment['company']['sortOrder'] = 60;
         $billingAddressPayment['company']['visible'] = false;
+
 
         return $jsLayout;
     }
@@ -60,9 +60,7 @@ class LayoutProcessor implements LayoutProcessorInterface
             'validation'    => [ 'required-entry' => false ],
             'customEntry' => null,
             'visible'   => true,
-            'additionalClasses' => 'field-wantinvoice',
-            'options' => [],
-            'filterBy' => null
+            'additionalClasses' => 'field-wantinvoice'
         ];
     }
 
@@ -165,7 +163,7 @@ class LayoutProcessor implements LayoutProcessorInterface
                 'elementTmpl' => 'ui/form/element/input'
             ],
             'dataScope' => $scope . '.custom_attributes.fiscal_code_id',
-            'label' => __('Fiscal Code FISCALE'),
+            'label' => __('Fiscal Code'),
             'provider' => 'checkoutProvider',
             'sortOrder' => 64,
             'validation' => [

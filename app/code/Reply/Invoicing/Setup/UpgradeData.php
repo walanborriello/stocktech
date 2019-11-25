@@ -19,6 +19,8 @@ use Magento\Eav\Model\Entity\Attribute\SetFactory as AttributeSetFactory;
 
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
 
+    const CUSTOMER_ADDRESS_ENTITY = 2;
+
     /**
      * @var Config
      */
@@ -60,40 +62,32 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
      */
     public function upgrade(\Magento\Framework\Setup\ModuleDataSetupInterface $setup, \Magento\Framework\Setup\ModuleContextInterface $context){
 
-        if(version_compare($context->getVersion(), '1.0.3', '<=')){
+        if(version_compare($context->getVersion(), '2.0.0', '<=')){
 
             $setup->startSetup();
 
             $eavSetup = $this->_eavSetupFactory->create(['setup' => $setup]);
 
+            $entityTypeId = self::CUSTOMER_ADDRESS_ENTITY;
+            try{
+                $eavSetup->removeAttribute($entityTypeId, 'customer_invoice_type');
+                $eavSetup->removeAttribute($entityTypeId, 'fiscal_code_id');
+                $eavSetup->removeAttribute($entityTypeId, 'pec');
+                $eavSetup->removeAttribute($entityTypeId, 'sdi');
+                $eavSetup->removeAttribute($entityTypeId, 'wantinvoice');
+            } catch(\Exception $e){}
+
             $eavSetup->addAttribute('customer_address', 'wantinvoice', [
                 'type' => 'int',
                 'label' => 'Want invoice',
-                'input' => 'select',
-                'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
-                'required' => true,
+                'input' => 'boolean',
+                'required' => false,
+                'user_defined' => true,
                 'default' => '0',
                 'sort_order' => 100,
                 'system' => false,
                 'position' => 100
             ]);
-
-
-            $eavSetup->addAttribute('customer_address', 'fiscal_code_id', [
-                'type' => 'varchar',
-                'input' => 'text',
-                'label' => 'FISCAL CODE ID',
-                'visible' => true,
-                'required' => false,
-                'user_defined' => true,
-                'system' => false,
-                'group' => 'General',
-                'global' => true,
-                'visible_on_front' => true,
-                'sort_order' => 101,
-                'position' => 101
-            ]);
-
 
             $eavSetup->addAttribute('customer_address', 'pec', [
                 'type' => 'varchar',
@@ -126,16 +120,23 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
                 'position' => 103
             ]);
 
+            $eavSetup->addAttribute('customer_address', 'fiscal_code_id', [
+                'type' => 'varchar',
+                'input' => 'text',
+                'label' => 'Fiscal Code',
+                'visible' => true,
+                'required' => false,
+                'user_defined' => true,
+                'system' => false,
+                'group' => 'General',
+                'global' => true,
+                'visible_on_front' => true,
+                'sort_order' => 104,
+                'position' => 104
+            ]);
+
 
             $customAttribute = $this->eavConfig->getAttribute('customer_address', 'wantinvoice');
-
-            $customAttribute->setData(
-                'used_in_forms',
-                ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']
-            );
-            $customAttribute->save();
-
-            $customAttribute = $this->eavConfig->getAttribute('customer_address', 'fiscal_code_id');
 
             $customAttribute->setData(
                 'used_in_forms',
@@ -159,63 +160,15 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
             );
             $customAttribute->save();
 
+            $customAttribute = $this->eavConfig->getAttribute('customer_address', 'fiscal_code_id');
+
+            $customAttribute->setData(
+                'used_in_forms',
+                ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']
+            );
+            $customAttribute->save();
+
             $setup->endSetup();
-        }
-
-        if(version_compare($context->getVersion(), '1.0.4', '<=')){
-
-            $setup->startSetup();
-
-            $eavSetup = $this->_eavSetupFactory->create(['setup' => $setup]);
-
-            $eavSetup->addAttribute('customer_address', 'wantinvoice', [
-                'type' => 'int',
-                'label' => 'Want invoice',
-                'input' => 'boolean',
-                'required' => true,
-                'default' => '0',
-                'sort_order' => 100,
-                'system' => false,
-                'position' => 100
-            ]);
-            $customAttribute = $this->eavConfig->getAttribute('customer_address', 'wantinvoice');
-
-            $customAttribute->setData(
-                'used_in_forms',
-                ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']
-            );
-            $customAttribute->save();
-
-        }
-
-
-        if(version_compare($context->getVersion(), '1.0.5', '<=')){
-            $setup->startSetup();
-
-            $eavSetup = $this->_eavSetupFactory->create(['setup' => $setup]);
-
-            $eavSetup->addAttribute('customer_address', 'fiscal_code_id', [
-                'type' => 'varchar',
-                'input' => 'text',
-                'label' => 'Fiscal Code',
-                'visible' => true,
-                'required' => false,
-                'user_defined' => true,
-                'system' => false,
-                'group' => 'General',
-                'global' => true,
-                'visible_on_front' => true,
-                'sort_order' => 104,
-                'position' => 104
-            ]);
-            $customAttribute = $this->eavConfig->getAttribute('customer_address', 'customer_register_address');
-
-            $customAttribute->setData(
-                'used_in_forms',
-                ['adminhtml_customer_address', 'customer_address_edit', 'customer_register_address']
-            );
-            $customAttribute->save();
-
         }
 
     }
