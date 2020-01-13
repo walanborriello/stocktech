@@ -25,12 +25,7 @@ define([
                             value = value['value'];
                         }
 
-                        if (key !== 'customer_invoice_type') {
-                            billingAddress['extension_attributes'][key] = value;
-                            if(key === 'wantinvoice'){
-                                billingAddress['extension_attributes'][key] = parseInt(value);
-                            }
-                        }
+                        billingAddress['extension_attributes'][key] = value;
                     });
                 }
 

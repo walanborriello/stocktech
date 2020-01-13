@@ -26,19 +26,14 @@ define([
                             value = value['value'];
 
                         }
-                        if (key !== 'customer_invoice_type') {
-                            console.log(key);
-                            billingAddress['extension_attributes'][key] = value;
-                            if(key === 'wantinvoice'){
-                                billingAddress['extension_attributes'][key] = parseInt(value);
-                            }
-                        }
+                        console.log(key + '  ' + value);
+                        billingAddress['extension_attributes'][key] = value;
                     });
+                    billingAddress['extension_attributes']['wantinvoice'] = "1";
                 }
 
             }
-
-            return originalAction(messageContainer);
+            return originalAction();
         });
     };
 })

@@ -73,6 +73,7 @@ class LayoutProcessor implements LayoutProcessorInterface
      */
     protected function getCustomerInvoiceTypeField($scope)
     {
+
         return [
             'component' => 'Reply_Invoicing/js/view/form/element/customer-invoice-type',
             'config' => [

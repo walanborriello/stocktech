@@ -11,10 +11,8 @@ namespace Reply\Invoicing\Setup;
 
 use Magento\Eav\Model\Config;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Framework\Setup\InstallDataInterface;
-use Magento\Framework\Setup\ModuleContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Eav\Model\Entity\Attribute\SetFactory as AttributeSetFactory;
+use Magento\Framework\DB\Ddl\Table;
 
 
 class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
@@ -75,7 +73,8 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
                 $eavSetup->removeAttribute($entityTypeId, 'pec');
                 $eavSetup->removeAttribute($entityTypeId, 'sdi');
                 $eavSetup->removeAttribute($entityTypeId, 'wantinvoice');
-            } catch(\Exception $e){}
+            }catch(\Exception $e){
+            }
 
             $eavSetup->addAttribute('customer_address', 'wantinvoice', [
                 'type' => 'int',
@@ -171,5 +170,72 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface{
             $setup->endSetup();
         }
 
+        if(version_compare($context->getVersion(), '2.0.1', '<=')){
+            $setup->startSetup();
+            if($setup->getConnection()->tableColumnExists('quote_address', 'wantinvoice')){
+                $definition = [
+                    'type' => Table::TYPE_TEXT,
+                    'nullable' => true,
+                    'comment' => 'Want Invoice'
+                ];
+                $setup->getConnection()->modifyColumn(
+                    $setup->getTable('quote_address'),
+                    'wantinvoice',
+                    $definition
+                );
+            }
+            $setup->endSetup();
+        }
+
+        if(version_compare($context->getVersion(), '2.0.2', '<=')){
+            $setup->startSetup();
+            if($setup->getConnection()->tableColumnExists('quote_address', 'customer_invoice_type')){
+                $definition = [
+                    'type' => Table::TYPE_TEXT,
+                    'nullable' => true,
+                    'comment' => 'Want Invoice'
+                ];
+                $setup->getConnection()->modifyColumn(
+                    $setup->getTable('quote_address'),
+                    'customer_invoice_type',
+                    $definition
+                );
+            }
+            $setup->endSetup();
+        }
+
+        if(version_compare($context->getVersion(), '2.0.3', '<=')){
+            $setup->startSetup();
+            if($setup->getConnection()->tableColumnExists('sales_order_address', 'wantinvoice')){
+                $definition = [
+                    'type' => Table::TYPE_TEXT,
+                    'nullable' => true,
+                    'comment' => 'Want Invoice'
+                ];
+                $setup->getConnection()->modifyColumn(
+                    $setup->getTable('sales_order_address'),
+                    'wantinvoice',
+                    $definition
+                );
+            }
+            $setup->endSetup();
+        }
+
+        if(version_compare($context->getVersion(), '2.0.4', '<=')){
+            $setup->startSetup();
+            if($setup->getConnection()->tableColumnExists('sales_order_address', 'customer_invoice_type')){
+                $definition = [
+                    'type' => Table::TYPE_TEXT,
+                    'nullable' => true,
+                    'comment' => 'Want Invoice'
+                ];
+                $setup->getConnection()->modifyColumn(
+                    $setup->getTable('sales_order_address'),
+                    'customer_invoice_type',
+                    $definition
+                );
+            }
+            $setup->endSetup();
+        }
     }
 }

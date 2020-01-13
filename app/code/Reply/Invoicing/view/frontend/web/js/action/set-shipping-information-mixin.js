@@ -21,13 +21,8 @@ define([
                         key = value['attribute_code'];
                         value = value['value'];
                     }
-                    if (key !== 'customer_invoice_type') {
-                        shippingAddress['customAttributes'][key] = value;
-                        shippingAddress['extension_attributes'][key] = value;
-                        if(key === 'wantinvoice'){
-                            shippingAddress['extension_attributes'][key] = parseInt(value);
-                        }
-                    }
+                    shippingAddress['customAttributes'][key] = value;
+                    shippingAddress['extension_attributes'][key] = value;
                 });
             }
 
