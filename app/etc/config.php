@@ -204,15 +204,19 @@ return [
         'Dotdigitalgroup_Email' => 1,
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
+        'Mageplaza_Core' => 1,
+        'Opengento_Gdpr' => 1,
+        'Thinkopen_CustomAttributeManagement' => 1,
         'Solwin_Core' => 1,
         'Solwin_Cpanel' => 1,
         'Solwin_ScrolltoTop' => 1,
         'Temando_Shipping' => 1,
+        'Thinkopen_CustomerCustomAttributes' => 1,
+        'Reply_Invoicing' => 1,
         'Vertex_Tax' => 1,
         'Vmasciotta_ProvinceItaliane' => 1,
         'Walan_Catalog' => 1,
         'Walan_Checkout' => 1,
-        'Walan_FatturazioneElettronica' => 1,
         'Walan_Theme' => 1
     ]
 ];
