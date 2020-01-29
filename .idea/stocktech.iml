@@ -286,9 +286,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/magento/theme-frontend-blank" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/magento/theme-frontend-luma" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/magento/zendframework1" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mageplaza/magento-2-italian-language-pack" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mageplaza/module-core" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikey179/vfsstream" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/moontoast/math" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/msp/recaptcha" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/msp/twofactorauth" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mustache/mustache" />
